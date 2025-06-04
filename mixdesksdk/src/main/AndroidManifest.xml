@@ -1,0 +1,84 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="org.xutils" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application>
+
+        <!--聊天界面-->
+        <activity
+            android:name="com.mixdesk.mixdesksdk.activity.MXConversationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!--图片查看界面-->
+        <activity
+            android:name="com.mixdesk.mixdesksdk.activity.MXPhotoPreviewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!--图片选择界面-->
+        <activity
+            android:name="com.mixdesk.mixdesksdk.activity.MXPhotoPickerActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--图片选择预览界面-->
+        <activity
+            android:name="com.mixdesk.mixdesksdk.activity.MXPhotoPickerPreviewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!--WebView 界面-->
+        <activity
+            android:name="com.mixdesk.mixdesksdk.activity.MXWebViewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <service
+            android:name="com.mixdesk.core.MixdeskService"
+            android:exported="false" />
+
+        <provider
+            android:name="com.mixdesk.mixdesksdk.util.MXFileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/mx_file_paths" />
+        </provider>
+
+        <provider
+            android:name="com.mixdesk.core.MXInitializeContentProvider"
+            android:authorities="${applicationId}.MQInitializeContentProvider"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

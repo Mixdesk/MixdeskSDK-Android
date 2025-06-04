@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mx_title_height">48dp</dimen>
+    <dimen name="mx_chat_box_height">50dp</dimen>
+    <dimen name="mx_titlebar_textSize">20sp</dimen>
+    <dimen name="mx_title_left_right_textSize">16sp</dimen>
+    <dimen name="mx_size_level1">4dp</dimen>
+    <dimen name="mx_size_level2">8dp</dimen>
+    <dimen name="mx_size_level3">12dp</dimen>
+    <dimen name="mx_size_level4">16dp</dimen>
+    <dimen name="mx_size_level5">20dp</dimen>
+    <dimen name="mx_size_level6">24dp</dimen>
+    <dimen name="mx_size_level7">28dp</dimen>
+    <dimen name="mx_size_level8">32dp</dimen>
+    <dimen name="mx_size_level9">36dp</dimen>
+    <dimen name="mx_size_level10">40dp</dimen>
+
+    <dimen name="mx_textSize_rich_text">14sp</dimen>
+    <dimen name="mx_textSize_level1">12sp</dimen>
+    <dimen name="mx_textSize_level2">16sp</dimen>
+    <dimen name="mx_textSize_level3">18sp</dimen>
+    <dimen name="mx_textSize_level4">20sp</dimen>
+
+    <dimen name="mx_custom_keyboard_height">260dp</dimen>
+    <dimen name="mx_audio_edge">20dp</dimen>
+    <dimen name="mx_audio_textSize">16sp</dimen>
+    <dimen name="mx_top_tip_height">38dp</dimen>
+</resources>

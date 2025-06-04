@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/checkbox"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:button="@null"
+    android:textColor="@color/mx_chat_event_gray"
+    android:textSize="@dimen/mx_textSize_level1"
+    android:drawablePadding="@dimen/mx_textSize_level1"
+    android:drawableRight="@drawable/mx_selector_checkbox"
+    tools:text="Mexico" />

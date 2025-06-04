@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MQMatchMatch.Vertical"
+    android:background="@color/mx_activity_bg">
+
+    <RelativeLayout
+        android:id="@+id/title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mx_title_height"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/mx_bg_title">
+
+        <RelativeLayout
+            android:id="@+id/back_rl"
+            style="@style/MQWrapMatch"
+            android:paddingLeft="@dimen/mx_size_level3"
+            android:paddingRight="@dimen/mx_size_level3">
+
+            <ImageView
+                android:id="@+id/back_iv"
+                style="@style/MQWrapMatch"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/mx_size_level1"
+                android:src="@drawable/mx_ic_back" />
+
+            <TextView
+                android:id="@+id/back_tv"
+                style="@style/MQWrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/back_iv"
+                android:text="@string/mx_back"
+                android:textColor="@color/mx_activity_title_textColor"
+                android:textSize="@dimen/mx_title_left_right_textSize"
+                tools:text="返回" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/MQWrapMatch"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:maxWidth="175dp"
+            android:singleLine="true"
+            android:text="@string/mx_leave_msg"
+            android:textColor="@color/mx_activity_title_textColor"
+            android:textSize="@dimen/mx_titlebar_textSize" />
+
+        <TextView
+            android:id="@+id/submit_tv"
+            style="@style/MQWrapMatch"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/mx_size_level1"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/mx_size_level3"
+            android:paddingRight="@dimen/mx_size_level3"
+            android:text="@string/mx_submit"
+            android:textColor="@color/mx_activity_title_textColor"
+            android:textSize="@dimen/mx_title_left_right_textSize" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        style="@style/MQMatchMatch"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/MQMatchMatch.Vertical"
+            android:paddingBottom="@dimen/mx_size_level4"
+            android:paddingLeft="@dimen/mx_size_level4"
+            android:paddingRight="@dimen/mx_size_level4">
+
+            <TextView
+                android:id="@+id/message_tip_tv"
+                style="@style/MQMatchWrap"
+                android:layout_marginTop="@dimen/mx_size_level4"
+                android:textColor="@color/mx_form_tip_textColor"
+                android:textSize="@dimen/mx_textSize_level1"
+                tools:text="我们的在线时间是周一至周五 08:30 ~ 19:30，如果你有任何需要，请给我们留言，我们会第一时间回复你" />
+
+            <LinearLayout
+                android:id="@+id/input_container_ll"
+                style="@style/MQMatchWrap.Vertical" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

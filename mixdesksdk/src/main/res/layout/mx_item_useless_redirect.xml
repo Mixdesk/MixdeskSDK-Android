@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MQMatchWrap.Vertical"
+    android:gravity="center"
+    android:padding="@dimen/mx_size_level3">
+
+    <TextView
+        android:id="@+id/tv_item_redirect_tip"
+        style="@style/MQWrapWrap"
+        android:text="@string/mx_useless_redirect_tip"
+        android:textColor="@color/mx_chat_event_gray"
+        android:textSize="@dimen/mx_textSize_level1" />
+
+    <TextView
+        android:id="@+id/tv_useless_redirect_redirect_human"
+        style="@style/MQWrapWrap"
+        android:clickable="true"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="@dimen/mx_size_level1"
+        android:paddingRight="@dimen/mx_size_level1"
+        android:text="@string/mx_redirect_human"
+        android:textColor="@color/mx_colorPrimary"
+        android:textSize="@dimen/mx_textSize_level1" />
+
+</LinearLayout>

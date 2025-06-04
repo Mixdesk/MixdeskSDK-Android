@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MQMatchWrap.Vertical"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/mx_size_level4">
+
+    <TextView
+        android:id="@+id/tv_queue_info_tv"
+        style="@style/MQWrapWrap"
+        android:layout_marginBottom="@dimen/mx_size_level3"
+        android:paddingLeft="@dimen/mx_size_level4"
+        android:paddingRight="@dimen/mx_size_level4"
+        android:gravity="center"
+        android:textColor="@color/mx_chat_event_gray"
+        android:textSize="@dimen/mx_textSize_level1" />
+
+    <TextView
+        style="@style/MQWrapWrap"
+        android:layout_marginBottom="@dimen/mx_size_level2"
+        android:text="@string/mx_number_waiting"
+        android:textColor="@color/mx_chat_left_textColor"
+        android:textSize="@dimen/mx_textSize_level1" />
+
+    <TextView
+        android:id="@+id/tv_wait_number"
+        style="@style/MQWrapWrap"
+        android:layout_marginBottom="@dimen/mx_size_level2"
+        android:text="3"
+        android:textColor="@color/mx_colorPrimary"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/tv_ticket_intro"
+        style="@style/MQWrapWrap"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/mx_size_level2"
+        android:paddingLeft="@dimen/mx_size_level4"
+        android:paddingRight="@dimen/mx_size_level4"
+        android:textColor="@color/mx_chat_event_gray"
+        android:text="@string/mx_not_wait_and_choose"
+        android:textSize="@dimen/mx_textSize_level1" />
+
+    <TextView
+        android:id="@+id/tv_redirect_queue_leave_msg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:background="@drawable/mx_bg_card_primary"
+        android:clickable="true"
+        android:paddingLeft="@dimen/mx_size_level1"
+        android:paddingRight="@dimen/mx_size_level1"
+        android:text="@string/mx_leave_us_msg"
+        android:textColor="@color/mx_white"
+        android:textSize="14sp" />
+
+</LinearLayout>

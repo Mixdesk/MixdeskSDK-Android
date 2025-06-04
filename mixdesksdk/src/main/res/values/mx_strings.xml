@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mx_expire_after"> %1$s 小时后过期</string>
+    <string name="mx_expired">已过期</string>
+    <string name="mx_expired_top_tip">文件已过期，无法下载</string>
+    <string name="mx_downloading">下载中 …</string>
+    <string name="mx_download_complete">下载完成</string>
+    <string name="mx_download_error">下载文件失败</string>
+    <string name="mx_send">发送</string>
+    <string name="mx_title_net_not_work">网络加载失败</string>
+    <string name="mx_title_webview_rich_text">图文消息</string>
+    <string name="mx_title_default">在线客服</string>
+    <string name="mx_title_service_support">客服支持</string>
+    <string name="mx_title_submit_btn">提交</string>
+    <string name="mx_tip_required_before_submit">红色文字的地方为必填项,请填写完整</string>
+    <string name="mx_copy_success">复制成功</string>
+    <string name="mx_dialog_select_gallery">图库</string>
+    <string name="mx_dialog_select_camera_video">录像</string>
+    <string name="mx_dialog_select_video_title">请选择视频来源：</string>
+    <string name="mx_title_leave_msg">留言</string>
+    <string name="mx_title_unknown_error">未知错误</string>
+    <string name="mx_error_submit_form">提交表单失败,请稍后再试</string>
+    <string name="mx_error_auth_code_wrong">验证码错误或者已过期</string>
+    <string name="mx_title_inputting">正在输入...</string>
+    <string name="mx_allocate_agent">正在分配客服...</string>
+    <string name="mx_allocate_queue_title">排队等待中...</string>
+    <string name="mx_allocate_queue_tip">正在排队，请等待客服接入后发送消息</string>
+    <string name="mx_allocate_agent_tip">正在为您分配客服，请稍后重发</string>
+    <string name="mx_send_robot_msg_time_limit_tip">您发送的太快啦，请休息一下吧</string>
+    <string name="mx_leave_msg_tips">抱歉，现在没有客服人员在线\n你可以继续写下你的问题，我们会尽快回复</string>
+    <string name="mx_blacklist_tips">对不起，当前客服系统暂时无法使用</string>
+    <string name="mx_photo_not_support">当前设备不支持发送图片</string>
+    <string name="mx_no_sdcard">SD卡不存在</string>
+    <string name="mx_sdcard_no_permission">当前没有媒体访问权限</string>
+    <string name="mx_camera_or_storage_no_permission">当前没有相机权限 或者 媒体访问权限</string>
+    <string name="mx_camera_no_permission">当前没有相机权限</string>
+    <string name="mx_timeline_today">今天</string>
+    <string name="mx_timeline_yesterday">昨天</string>
+    <string name="mx_data_is_loading">数据加载中...</string>
+    <string name="mx_direct_content">接下来由 %1$s 为你服务</string>
+    <string name="mx_confirm">确定</string>
+    <string name="mx_cancel">取消</string>
+    <string name="mx_no_app_open_file">当前没有应用打开此文件</string>
+    <string name="mx_choose_ticket_category">选择分类</string>
+    <string name="mx_back"></string>
+    <string name="mx_contains_sensitive_words">！消息包含不规范用语</string>
+    <string name="mx_error_video_size">视频文件不允许超过 50MB</string>
+
+    <string name="mx_evaluate_title">你对本次服务满意吗？</string>
+    <string name="mx_evaluate_good">好评</string>
+    <string name="mx_evaluate_medium">中评</string>
+    <string name="mx_evaluate_bad">差评</string>
+    <string name="mx_evaluate_hint">填写评价内容 (选填)</string>
+    <string name="mx_evaluate_failure">评价失败</string>
+    <string name="mx_evaluate_require_tag">请勾选评价标签</string>
+    <string name="mx_evaluate_require_level">请选择评价等级</string>
+    <string name="mx_evaluate_already_evaluate">你已评价</string>
+
+    <string name="mx_audio_status_normal">按住说话</string>
+    <string name="mx_audio_status_recording">手指上滑，取消发送</string>
+    <string name="mx_audio_status_want_cancel">松开手指，取消发送</string>
+    <string name="mx_record_record_time_is_short">录音时间太短</string>
+
+    <string name="mx_download_audio_failure">下载录音失败</string>
+    <string name="mx_recorder_no_permission">没有录音权限</string>
+    <string name="mx_recorder_remaining_time">还可以说 %1$s 秒</string>
+
+    <string name="mx_view_photo">查看图片</string>
+    <string name="mx_save_img_failure">保存图片失败，再试试?</string>
+    <string name="mx_save_img_success_folder">图片已保存至 %s 文件夹</string>
+
+    <string name="mx_send_msg">发送消息</string>
+
+    <string name="mx_leave_msg_hint">请输入你的留言</string>
+    <string name="mx_all_image">所有图片</string>
+
+    <string name="mx_param_not_allow_empty">%1$s 不能为空</string>
+    <string name="mx_take_picture">拍摄照片</string>
+    <string name="mx_submit">提交</string>
+    <string name="mx_toast_photo_picker_max">最多只能选择 %1$s 张图片</string>
+    <string name="mx_choose">选择</string>
+    <string name="mx_hint_input">输入</string>
+    <string name="mx_auth_code">验证码</string>
+
+    <string name="mx_leave_msg">留言</string>
+    <string name="mx_submit_leave_msg_success">留言提交成功</string>
+
+    <string name="mx_email">邮箱</string>
+
+    <string name="mx_wechat">微信</string>
+
+    <string name="mx_qq">QQ</string>
+
+    <string name="mx_phone">手机</string>
+
+    <string name="mx_name">姓名</string>
+    <string name="mx_contact">联系人</string>
+    <string name="mx_gender">性别</string>
+    <string name="mx_age">年龄</string>
+    <string name="mx_address">地址</string>
+    <string name="mx_weibo">微博</string>
+    <string name="mx_comment">备注</string>
+    <string name="mx_invalid_content">请输入正确的格式</string>
+
+    <string name="mx_useless">未解决</string>
+    <string name="mx_useful">已解决</string>
+    <string name="mx_already_feedback">已反馈</string>
+    <string name="mx_redirect_human">转人工</string>
+    <string name="mx_no_agent_leave_msg_tip">抱歉，当前没有客服在线，你可以给我们</string>
+    <string name="mx_useless_redirect_tip">很抱歉您不满意机器人的回答，您可以尝试</string>
+    <string name="mx_manual_redirect_tip">您的问题如果需要人工支持，可以</string>
+
+    <string name="mx_leave_us_msg">给我们留言</string>
+    <string name="mx_number_waiting">当前等待人数</string>
+    <string name="mx_not_wait_and_choose">如果等不及，可以选择</string>
+    <string name="mx_unknown_msg_tip">当前 App 暂不支持该类型消息，请升级您的 App 到最新版本</string>
+    <string name="mx_inquire_gender_choice">["男","女"]</string>
+
+    <string name="mx_item_clue_card_input">请输入 %s</string>
+    <string name="mx_item_clue_card_select">请选择 %s</string>
+    <string name="mx_recall_msg">客服撤回了一条消息</string>
+    <string name="mx_submit_success">提交成功</string>
+    <string name="mx_request_permission">权限申请</string>
+    <string name="mx_content_request_storage_permission">保存图片需要申请存储空间权限</string>
+    <string name="mx_content_request_storage_permission_below_10">我们需要申请存储空间权限来【发送】和【保存】图片和视频</string>
+    <string name="mx_content_request_camera_and_storage_permission">发送图片和发送视频功能需要申请存储空间权限和相机权限</string>
+    <string name="mx_content_request_camera_permission">从相机发送图片和视频功能需要申请相机权限</string>
+    <string name="mx_content_request_record_permission">发送语音功能需要申请录音权限</string>
+    <string name="mx_title_send_photo">发送图片</string>
+    <string name="mx_content_send_photo">我们需要访问相册来发送图片</string>
+
+    <string name="mx_net_status_reconnect">网络连接中，接收消息可能会有遗漏</string>
+    <string name="mx_net_status_not_available">您的网络连接已断开，发送消息失败</string>
+    <string name="mx_net_status_reconnect_title">收取中</string>
+    <string name="mx_net_status_not_work_title">未连接</string>
+    <string name="mx_sale_count">销量</string>
+    <string name="mx_view_details">查看详情</string>
+    <string name="mx_faq">常见问题</string>
+    <string name="mx_pre_page">上一页</string>
+    <string name="mx_next_page">下一页</string>
+
+    <string name="mx_problem_solved">问题已经解决</string>
+    <string name="mx_problem_unsolved">问题未解决</string>
+
+</resources>

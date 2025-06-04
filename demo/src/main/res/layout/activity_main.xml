@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MQMatchMatch.Vertical"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            style="@style/MQWrapWrap"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_logo" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:paddingBottom="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                style="@style/DemoTv"
+                android:layout_marginBottom="8dp"
+                android:onClick="conversation"
+                android:text="咨询客服" />
+
+            <Button
+                style="@style/DemoTv"
+                android:layout_marginBottom="8dp"
+                android:onClick="developer"
+                android:text="开发者功能" />
+
+
+            <Button
+                style="@style/DemoTv"
+                android:layout_marginBottom="8dp"
+                android:onClick="customizedConversation"
+                android:text="自定义 Conversation" />
+
+            <Button
+                style="@style/DemoTv"
+                android:layout_marginBottom="8dp"
+                android:onClick="linkWebView"
+                android:text="聊天链接" />
+
+            <Button
+                style="@style/DemoTv"
+                android:onClick="littleHeart"
+                android:text="Little heart" />
+
+            <Button
+                style="@style/DemoTv"
+                android:onClick="androidDemo"
+                android:text="Android demo" />
+
+            <Button
+                style="@style/DemoTv"
+                android:onClick="switchAppKey"
+                android:text="切换 AppKey" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mx_expire_after">Expira em %1$s horas</string>
+    <string name="mx_expired">Expirado</string>
+    <string name="mx_expired_top_tip">O arquivo expirou e não pode ser baixado</string>
+    <string name="mx_downloading">A transferir...</string>
+    <string name="mx_download_complete">Transferência concluída</string>
+    <string name="mx_download_error">Falha ao transferir o ficheiro</string>
+    <string name="mx_send">Enviar</string>
+    <string name="mx_title_net_not_work">Falha na conexão de rede</string>
+    <string name="mx_title_webview_rich_text">Mensagem com multimédia</string>
+    <string name="mx_title_default">Suporte Online</string>
+    <string name="mx_title_service_support">Suporte ao Cliente</string>
+    <string name="mx_title_submit_btn">Submeter</string>
+    <string name="mx_tip_required_before_submit">Os campos em vermelho são obrigatórios, preencha todos</string>
+    <string name="mx_copy_success">Cópia bem-sucedida</string>
+    <string name="mx_dialog_select_gallery">Galeria de Imagens</string>
+    <string name="mx_dialog_select_camera_video">Gravar Vídeo</string>
+    <string name="mx_dialog_select_video_title">Escolha a origem do vídeo:</string>
+    <string name="mx_title_leave_msg">Deixar uma Mensagem</string>
+    <string name="mx_title_unknown_error">Erro Desconhecido</string>
+    <string name="mx_error_submit_form">Falha ao submeter o formulário, tente novamente mais tarde</string>
+    <string name="mx_error_auth_code_wrong">Código de autenticação incorreto ou expirado</string>
+    <string name="mx_title_inputting">A escrever...</string>
+    <string name="mx_allocate_agent">Alocando um agente...</string>
+    <string name="mx_allocate_queue_title">Em fila de espera...</string>
+    <string name="mx_allocate_queue_tip">Em fila de espera, aguarde que um agente atenda antes de enviar uma mensagem</string>
+    <string name="mx_allocate_agent_tip">Alocando um agente para você, por favor, tente novamente mais tarde</string>
+    <string name="mx_send_robot_msg_time_limit_tip">Você está a enviar mensagens muito rápido. Por favor, descanse um pouco.</string>
+    <string name="mx_leave_msg_tips">Desculpe, não há agentes de suporte online no momento. Você pode continuar a escrever sua pergunta e responderemos o mais rápido possível</string>
+    <string name="mx_blacklist_tips">Desculpe, o sistema de suporte ao cliente não está disponível no momento</string>
+    <string name="mx_photo_not_support">O dispositivo atual não suporta o envio de imagens</string>
+    <string name="mx_no_sdcard">Cartão SD não encontrado</string>
+    <string name="mx_sdcard_no_permission">Sem permissão de acesso a mídia no momento</string>
+    <string name="mx_camera_or_storage_no_permission">Sem permissão para a câmera ou acesso à mídia no momento</string>
+    <string name="mx_camera_no_permission">Sem permissão para a câmera no momento</string>
+    <string name="mx_timeline_today">Hoje</string>
+    <string name="mx_timeline_yesterday">Ontem</string>
+    <string name="mx_data_is_loading">A carregar dados...</string>
+    <string name="mx_direct_content">A seguir, %1$s estará a atendê-lo</string>
+    <string name="mx_confirm">Confirmar</string>
+    <string name="mx_cancel">Cancelar</string>
+    <string name="mx_no_app_open_file">Nenhum aplicativo disponível para abrir este arquivo</string>
+    <string name="mx_choose_ticket_category">Escolher a Categoria</string>
+    <string name="mx_back">Voltar</string>
+    <string name="mx_contains_sensitive_words">A mensagem contém linguagem imprópria</string>
+    <string name="mx_error_video_size">O arquivo de vídeo não pode exceder 50MB</string>
+
+    <string name="mx_evaluate_title">Você está satisfeito com o serviço?</string>
+    <string name="mx_evaluate_good">Avaliação Positiva</string>
+    <string name="mx_evaluate_medium">Avaliação Média</string>
+    <string name="mx_evaluate_bad">Avaliação Negativa</string>
+    <string name="mx_evaluate_hint">Escreva seus comentários (opcional)</string>
+    <string name="mx_evaluate_failure">Falha na avaliação</string>
+    <string name="mx_evaluate_already_evaluate">Ya has evaluado</string>
+
+    <string name="mx_audio_status_normal">Pressione para falar</string>
+    <string name="mx_audio_status_recording">Deslize o dedo para cima para cancelar o envio</string>
+    <string name="mx_audio_status_want_cancel">Solte o dedo para cancelar o envio</string>
+    <string name="mx_record_record_time_is_short">Tempo de gravação muito curto</string>
+
+    <string name="mx_download_audio_failure">Falha ao baixar a gravação!</string>
+    <string name="mx_recorder_no_permission">Sem permissão para gravar!</string>
+    <string name="mx_recorder_remaining_time">Você pode falar por mais %1$s segundos</string>
+
+    <string name="mx_view_photo">Visualizar Imagem</string>
+    <string name="mx_save_img_failure">Falha ao salvar a imagem, tentar novamente?</string>
+    <string name="mx_save_img_success_folder">Imagem salva na pasta %s</string>
+
+    <string name="mx_send_msg">Enviar Mensagem</string>
+
+    <string name="mx_leave_msg_hint">Por favor, digite a sua mensagem</string>
+    <string name="mx_all_image">Todas as Imagens</string>
+
+    <string name="mx_param_not_allow_empty">%1$s não pode estar vazio</string>
+    <string name="mx_take_picture">Tirar Foto</string>
+    <string name="mx_submit">Submeter</string>
+    <string name="mx_toast_photo_picker_max">Pode selecionar no máximo %1$s imagens</string>
+    <string name="mx_choose">Escolher</string>
+    <string name="mx_hint_input">Entrada</string>
+    <string name="mx_auth_code">Código de Autenticação</string>
+
+    <string name="mx_leave_msg">Deixar uma Mensagem</string>
+    <string name="mx_submit_leave_msg_success">Mensagem enviada com sucesso</string>
+
+    <string name="mx_email">Email</string>
+
+    <string name="mx_wechat">WeChat</string>
+
+    <string name="mx_qq">QQ</string>
+
+    <string name="mx_phone">Telefone</string>
+
+    <string name="mx_name">Nome</string>
+    <string name="mx_contact">Contato</string>
+    <string name="mx_gender">Gênero</string>
+    <string name="mx_age">Idade</string>
+    <string name="mx_address">Endereço</string>
+    <string name="mx_weibo">Weibo</string>
+    <string name="mx_comment">Comentário</string>
+    <string name="mx_invalid_content">Por favor, insira o formato correto</string>
+
+    <string name="mx_useless">Não resolvido</string>
+    <string name="mx_useful">Resolvido</string>
+    <string name="mx_already_feedback">Já enviado</string>
+    <string name="mx_redirect_human">Redirecionar para um Agente</string>
+    <string name="mx_no_agent_leave_msg_tip">Desculpe, não há agentes de suporte online no momento. Você pode nos deixar uma mensagem</string>
+    <string name="mx_useless_redirect_tip">Lamentamos que você não esteja satisfeito com a resposta do robô. Você pode tentar</string>
+    <string name="mx_manual_redirect_tip">Se você precisar de suporte humano para a sua pergunta, pode</string>
+
+    <string name="mx_leave_us_msg">Deixar uma Mensagem</string>
+    <string name="mx_number_waiting">Número de Pessoas em Espera</string>
+    <string name="mx_not_wait_and_choose">Se não quiser esperar, você pode escolher</string>
+    <string name="mx_unknown_msg_tip">O aplicativo atualmente não suporta esse tipo de mensagem. Atualize o seu aplicativo para a versão mais recente</string>
+    <string name="mx_inquire_gender_choice">["Homem","Mulher"]</string>
+
+    <string name="mx_item_clue_card_input">Por favor, insira %s</string>
+    <string name="mx_item_clue_card_select">Por favor, selecione %s</string>
+    <string name="mx_recall_msg">O agente retirou uma mensagem</string>
+    <string name="mx_submit_success">Submissão bem-sucedida</string>
+    <string name="mx_request_permission">Pedido de Permissão</string>
+    <string name="mx_content_request_storage_permission">Para salvar imagens, é necessário conceder permissão para armazenamento</string>
+    <string name="mx_content_request_camera_and_storage_permission">Para enviar imagens e vídeos, é necessário conceder permissão para armazenamento e câmera</string>
+    <string name="mx_content_request_camera_permission">Para enviar imagens e vídeos da câmera, é necessário conceder permissão para a câmera</string>
+    <string name="mx_content_request_record_permission">Para enviar áudio, é necessário conceder permissão para gravar</string>
+    <string name="mx_title_send_photo">Enviar Imagem</string>
+    <string name="mx_content_send_photo">Precisamos acessar a galeria de imagens para enviar fotos</string>
+
+    <string name="mx_net_status_reconnect">Reconectando à rede, pode haver perda de mensagens</string>
+    <string name="mx_net_status_not_available">Sua conexão de rede foi interrompida, falha ao enviar mensagens</string>
+    <string name="mx_net_status_reconnect_title">Reconectando</string>
+    <string name="mx_net_status_not_work_title">Sem Conexão</string>
+    <string name="mx_sale_count">Vendas</string>
+    <string name="mx_view_details">Ver Detalhes</string>
+    <string name="mx_faq">Perguntas Frequentes</string>
+    <string name="mx_pre_page">Página Anterior</string>
+    <string name="mx_next_page">Próxima Página</string>
+    <string name="mx_content_request_storage_permission_below_10">Necesitamos solicitar permisos de almacenamiento para [enviar] y [guardar] imágenes y videos.</string>
+
+    <string name="mx_problem_solved">Problema resuelto</string>
+    <string name="mx_problem_unsolved">Problema no resuelto</string>
+
+    <string name="mx_evaluate_require_tag">Por favor seleccione una etiqueta de evaluación</string>
+    <string name="mx_evaluate_require_level">Por favor seleccione el nivel de evaluación</string>
+</resources>

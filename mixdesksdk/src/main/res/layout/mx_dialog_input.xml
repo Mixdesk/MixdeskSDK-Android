@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MQMatchWrap.Vertical"
+    android:layout_marginLeft="@dimen/mx_size_level10"
+    android:layout_marginRight="@dimen/mx_size_level10"
+    android:background="@drawable/mx_shape_dialog_bg"
+    android:focusableInTouchMode="true"
+    android:paddingLeft="@dimen/mx_size_level5"
+    android:paddingTop="@dimen/mx_size_level3"
+    android:paddingRight="@dimen/mx_size_level5"
+    android:paddingBottom="@dimen/mx_size_level3">
+
+    <TextView
+        android:id="@+id/tv_comfirm_title"
+        style="@style/MQMatchWrap"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/mx_textSize_level2"
+        android:textStyle="bold"
+        tools:text="我是标题" />
+
+    <EditText
+        android:id="@+id/et_evaluate_content"
+        style="@style/MQMatchWrap"
+        android:layout_marginTop="@dimen/mx_size_level3"
+        android:background="@drawable/mx_selector_evaluate_et"
+        android:hint="@string/mx_evaluate_hint"
+        android:padding="@dimen/mx_size_level1"
+        android:singleLine="true"
+        android:textColor="@color/mx_chat_event_gray"
+        tools:textColorHint="@color/mx_evaluate_hint"
+        android:textCursorDrawable="@drawable/mx_shape_cursor"
+        android:textSize="@dimen/mx_textSize_level2" />
+
+    <LinearLayout
+        style="@style/MQMatchWrap.Horizontal"
+        android:layout_marginTop="@dimen/mx_size_level3"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/tv_evaluate_cancel"
+            style="@style/MQWrapWrap"
+            android:layout_marginRight="@dimen/mx_size_level6"
+            android:clickable="true"
+            android:padding="@dimen/mx_size_level2"
+            android:text="@string/mx_cancel"
+            android:textColor="@color/mx_selector_evaluate_button"
+            android:textSize="@dimen/mx_textSize_level2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_evaluate_confirm"
+            style="@style/MQWrapWrap"
+            android:clickable="true"
+            android:padding="@dimen/mx_size_level2"
+            android:text="@string/mx_confirm"
+            android:textColor="@color/mx_selector_evaluate_button"
+            android:textSize="@dimen/mx_textSize_level2"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

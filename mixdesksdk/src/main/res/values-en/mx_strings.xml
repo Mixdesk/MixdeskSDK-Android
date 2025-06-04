@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mx_expire_after">Expires in %1$s hours</string>
+    <string name="mx_expired">Expired</string>
+    <string name="mx_expired_top_tip">File expired, could not download</string>
+    <string name="mx_downloading">Downloading…</string>
+    <string name="mx_download_complete">Download complete</string>
+    <string name="mx_download_error">Failed to download file</string>
+    <string name="mx_send">SEND</string>
+    <string name="mx_title_net_not_work">Network Unavailable</string>
+    <string name="mx_title_webview_rich_text">Graphic message</string>
+    <string name="mx_title_default">Online Service</string>
+    <string name="mx_title_service_support">Support</string>
+    <string name="mx_title_submit_btn">SUBMIT</string>
+    <string name="mx_tip_required_before_submit">Red text is required, please complete</string>
+    <string name="mx_copy_success">Copied</string>
+    <string name="mx_dialog_select_gallery">GALLERY</string>
+    <string name="mx_dialog_select_camera_video">RECORD</string>
+    <string name="mx_dialog_select_video_title">Please select a video source：</string>
+    <string name="mx_title_leave_msg">Leave a message</string>
+    <string name="mx_title_unknown_error">Unknown error occurred</string>
+    <string name="mx_error_submit_form">Submitting the form failed, please try again later</string>
+    <string name="mx_error_auth_code_wrong">Invalid validation code</string>
+    <string name="mx_title_inputting">typing...</string>
+    <string name="mx_allocate_agent">Allocating Service...</string>
+    <string name="mx_allocate_queue_title">Waiting in line...</string>
+    <string name="mx_allocate_queue_tip">Waiting in line, please wait for the customer service to send a message</string>
+    <string name="mx_allocate_agent_tip">Customer is assigned to you, please resend later</string>
+    <string name="mx_send_robot_msg_time_limit_tip">You send too fast, please take a break</string>
+    <string name="mx_leave_msg_tips">Sorry, there are no customer service staff online now. You can continue to write down your questions and we will respond as soon as possible.</string>
+    <string name="mx_blacklist_tips">Sorry, the current customer service system is temporarily unavailable</string>
+    <string name="mx_photo_not_support">Photo not supported in this device.</string>
+    <string name="mx_no_sdcard">SD card does not exist</string>
+    <string name="mx_sdcard_no_permission">Does not have permission to access files.</string>
+    <string name="mx_camera_or_storage_no_permission">Does not have permission to access photos and media.</string>
+    <string name="mx_camera_no_permission">Does not have permission to access media.</string>
+    <string name="mx_timeline_today">Today</string>
+    <string name="mx_timeline_yesterday">Yesterday</string>
+    <string name="mx_data_is_loading">Loading data...</string>
+    <string name="mx_direct_content">%1$s will provide services for you</string>
+    <string name="mx_confirm">OK</string>
+    <string name="mx_cancel">CANCEL</string>
+    <string name="mx_no_app_open_file">No application found to open file</string>
+    <string name="mx_choose_ticket_category">Select categories</string>
+    <string name="mx_back"></string>
+    <string name="mx_contains_sensitive_words">!Contains sensitive words</string>
+    <string name="mx_error_video_size">Video file are not allowed to exceed 50MB</string>
+
+    <string name="mx_evaluate_title">Are you satisfied with our services？</string>
+    <string name="mx_evaluate_good">Good</string>
+    <string name="mx_evaluate_medium">Medium</string>
+    <string name="mx_evaluate_bad">Bad</string>
+    <string name="mx_evaluate_hint">Please leave a comment (Optional)</string>
+    <string name="mx_evaluate_failure">Evaluation failed</string>
+    <string name="mx_evaluate_already_evaluate">You have already evaluated</string>
+
+    <string name="mx_audio_status_normal">Hold to speak</string>
+    <string name="mx_audio_status_recording">Slide up to cancel sending</string>
+    <string name="mx_audio_status_want_cancel">Release to cancel send</string>
+    <string name="mx_record_record_time_is_short">The recording time is too short</string>
+
+    <string name="mx_download_audio_failure">Download of recording has failed</string>
+    <string name="mx_recorder_no_permission">Failed to record voice, Please make sure you have voice permission.</string>
+    <string name="mx_recorder_remaining_time">End in %1$d seconds</string>
+
+    <string name="mx_view_photo">View Image</string>
+    <string name="mx_save_img_failure">Failed to save a photo.</string>
+    <string name="mx_save_img_success_folder">The picture has been saved to the %s folder</string>
+
+    <string name="mx_send_msg">Send message</string>
+
+    <string name="mx_leave_msg_hint">Enter a comment</string>
+    <string name="mx_all_image">All photos</string>
+
+    <string name="mx_param_not_allow_empty">%1$s cannot be empty</string>
+    <string name="mx_take_picture">Take photo</string>
+    <string name="mx_submit">Submit</string>
+    <string name="mx_toast_photo_picker_max">Up to %1$s photo(s)</string>
+    <string name="mx_choose">Choose</string>
+    <string name="mx_hint_input">Input</string>
+    <string name="mx_auth_code">CAPTCHA</string>
+
+    <string name="mx_leave_msg">Message</string>
+    <string name="mx_submit_leave_msg_success">Feedback Submitted Successfully</string>
+
+    <string name="mx_email">Email</string>
+
+    <string name="mx_wechat">Wechat</string>
+
+    <string name="mx_qq">QQ</string>
+
+    <string name="mx_phone">Phone</string>
+
+    <string name="mx_name">Name</string>
+    <string name="mx_contact">Contact</string>
+    <string name="mx_gender">Gender</string>
+    <string name="mx_age">Age</string>
+    <string name="mx_address">Address</string>
+    <string name="mx_weibo">Weibo</string>
+    <string name="mx_comment">Comment</string>
+    <string name="mx_invalid_content">Please enter the correct format</string>
+
+    <string name="mx_useless">Unresolved</string>
+    <string name="mx_useful">Resolved</string>
+    <string name="mx_already_feedback">Responded</string>
+    <string name="mx_redirect_human">Human service</string>
+    <string name="mx_no_agent_leave_msg_tip">Sorry，no service online，you can contact us by </string>
+    <string name="mx_useless_redirect_tip">Sorry, you are not satisfied with the robot answer, you can try </string>
+    <string name="mx_manual_redirect_tip">If your problem requires manual support, you can </string>
+
+    <string name="mx_leave_us_msg">Leave us a message</string>
+    <string name="mx_number_waiting">Number of people currently waiting</string>
+    <string name="mx_not_wait_and_choose">If you can’t wait, you can choose</string>
+    <string name="mx_unknown_msg_tip">The current app does not support this type of message, please upgrade your app to the latest version.</string>
+    <string name="mx_inquire_gender_choice">["Male","Female"]</string>
+
+    <string name="mx_item_clue_card_input">Please enter %s</string>
+    <string name="mx_item_clue_card_select">Please select %s</string>
+    <string name="mx_recall_msg">service recall a message</string>
+    <string name="mx_submit_success">submitted</string>
+
+    <string name="mx_request_permission">Request permission</string>
+    <string name="mx_content_request_storage_permission">We need storage permission to save image</string>
+    <string name="mx_content_request_camera_and_storage_permission">We need storage and camera permissions to send image/video message</string>
+    <string name="mx_content_request_camera_permission">We need camera permission to send image/video message</string>
+    <string name="mx_content_request_record_permission">We need record permission to send voice message</string>
+    <string name="mx_title_send_photo">Send images</string>
+    <string name="mx_content_send_photo">We need access to albums to send images</string>
+
+    <string name="mx_net_status_reconnect">The network is connecting</string>
+    <string name="mx_net_status_not_available">Your network connection has been disconnected and sending messages has failed</string>
+    <string name="mx_net_status_reconnect_title">Receiving</string>
+    <string name="mx_net_status_not_work_title">Not connected</string>
+    <string name="mx_sale_count">Sales</string>
+    <string name="mx_view_details">View details</string>
+    <string name="mx_faq">FAQ</string>
+    <string name="mx_pre_page">Previous</string>
+    <string name="mx_next_page">Next</string>
+    <string name="mx_content_request_storage_permission_below_10">We need to request storage permissions to [send] and [save] pictures and videos.</string>
+
+    <string name="mx_problem_solved">Problem Solved</string>
+    <string name="mx_problem_unsolved">Problem Unsolved</string>
+
+    <string name="mx_evaluate_require_tag">Please select an evaluation tag</string>
+    <string name="mx_evaluate_require_level">Please select rating level</string>
+</resources>
