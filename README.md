@@ -8,7 +8,7 @@
 ### Environment Required
 - JDK7+
 
-### AndroidStudio  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.meiqia/androidx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.meiqia/androidx)
+### AndroidStudio
 
 ```
 implementation 'com.mixdesk:androidx:0.0.1'
