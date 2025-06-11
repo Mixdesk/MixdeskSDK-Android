@@ -45,7 +45,7 @@
                 android:id="@+id/iv_solved"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/mx_evaluate_solved" />
+                android:src="@drawable/mx_evaluate_solved_line" />
 
             <TextView
                 android:id="@+id/tv_solved"
@@ -73,7 +73,7 @@
                 android:id="@+id/iv_unsolved"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/mx_evaluate_unsolved" />
+                android:src="@drawable/mx_evaluate_unsolved_line" />
 
             <TextView
                 android:id="@+id/tv_unsolved"

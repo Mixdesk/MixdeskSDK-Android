@@ -128,8 +128,6 @@ public class MXConversationActivity
     private static final int VIDEO_REQUEST_CODE = 5;
     private static final int CAMERA_REQUEST_CODE = 6;
 
-    private static final int WHAT_GET_CLIENT_POSITION_IN_QUEUE = 1;
-
     public static final String CLIENT_ID = "clientId";
     public static final String CUSTOMIZED_ID = "customizedId";
     public static final String CLIENT_INFO = "clientInfo";
@@ -257,12 +255,12 @@ public class MXConversationActivity
     }
 
     private void refreshConfig(boolean isConvActive) {
-        // 已经分配了对话的情况下，不再显示询前表单
+        // 已经分配了对话的情况下，不再刷新配置
         if (isConvActive) {
             applyAfterRefreshConfig();
             return;
         }
-        // 刷新配置，然后决定是否跳转到询前表单或者其它界面
+        // 刷新配置
         mController.refreshEnterpriseConfig(new SimpleCallback() {
             @Override
             public void onSuccess() {
@@ -280,8 +278,8 @@ public class MXConversationActivity
                 }
 
 
-                    // 都不是，就继续初始化聊天界面
-                    applyAfterRefreshConfig();
+                // 都不是，就继续初始化聊天界面
+                applyAfterRefreshConfig();
             }
 
             @Override
@@ -407,8 +405,6 @@ public class MXConversationActivity
         // 在已经加载数据的情况下,重新进入界面,需要再次打开服务
         if (mHasLoadData) {
             mController.openService();
-
-//            sendGetClientPositionInQueueMsg();
         }
         MXConfig.getActivityLifecycleCallback().onActivityStarted(this);
         mController.onConversationStart();
@@ -431,8 +427,6 @@ public class MXConversationActivity
     @Override
     protected void onStop() {
         super.onStop();
-
-        mHandler.removeMessages(WHAT_GET_CLIENT_POSITION_IN_QUEUE);
 
         if (mChatMsgAdapter != null) {
             mChatMsgAdapter.stopPlayVoice();
@@ -480,7 +474,7 @@ public class MXConversationActivity
         }
 
         if (MXConfig.isCloseSocketAfterDestroy) {
-            MXManager.getInstance(this).closeMixdeskService();
+            MXManager.getInstance(this).closeService();
         }
         super.onDestroy();
     }
@@ -520,9 +514,6 @@ public class MXConversationActivity
         mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-//                if (msg.what == WHAT_GET_CLIENT_POSITION_IN_QUEUE) {
-//                    getClientPositionInQueue();
-//                }
             }
         };
 
@@ -696,8 +687,6 @@ public class MXConversationActivity
      */
     protected void changeTitleToNetErrorState() {
         mTitleTv.setText(getResources().getString(R.string.mx_net_status_not_work_title));
-
-        mHandler.removeMessages(WHAT_GET_CLIENT_POSITION_IN_QUEUE);
 
         hiddenAgentStatusAndRedirectHuman();
     }
@@ -980,7 +969,6 @@ public class MXConversationActivity
 
     /**
      * 设置顾客上线
-     *
      */
     private void setClientOnline() {
         if (isRequestOnlineLoading) {
@@ -1044,9 +1032,9 @@ public class MXConversationActivity
                             if (ErrorCode.NET_NOT_WORK == code) {
                                 changeTitleToNetErrorState();
                             } else if (ErrorCode.NO_AGENT_ONLINE == code) {
-                                    setCurrentAgent(null);
-                                    // 没有分配到客服，也根据设置是否上传顾客信息
-                                    setOrUpdateClientInfo();
+                                setCurrentAgent(null);
+                                // 没有分配到客服，也根据设置是否上传顾客信息
+                                setOrUpdateClientInfo();
                             } else if (ErrorCode.BLACKLIST == code) {
                                 setCurrentAgent(null);
                                 isBlackState = true;
@@ -1054,7 +1042,8 @@ public class MXConversationActivity
                                 // 请求取消
                             } else {
                                 changeTitleToUnknownErrorState();
-                                Toast.makeText(MXConversationActivity.this, "code = " + code + "\n" + "message = " + message, Toast.LENGTH_SHORT).show();
+                                // 使用对话框显示完整错误信息
+                                showErrorMessage(code, message);
                             }
                             // 如果没有加载数据，则加载数据
                             if (!mHasLoadData) {
@@ -1303,31 +1292,6 @@ public class MXConversationActivity
                 imageMessage.setLocalPath(imageFile.getAbsolutePath());
                 delaySendList.add(imageMessage);
             }
-//            if (preSendProductCardBundle != null) {
-//                HybridMessage productMessage = new HybridMessage();
-//                productMessage.setAvatar(getClientAvatarUrl());
-//                productMessage.setFromType(BaseMessage.TYPE_FROM_CLIENT);
-//                productMessage.setContentType(BaseMessage.TYPE_CONTENT_HYBRID);
-//                Map<String, Object> contentMap = new HashMap<>();
-//                Map<String, Object> bodyMap = new HashMap<>();
-//                bodyMap.put("pic_url", preSendProductCardBundle.getString("pic_url"));
-//                bodyMap.put("title", preSendProductCardBundle.getString("title"));
-//                bodyMap.put("description", preSendProductCardBundle.getString("description"));
-//                bodyMap.put("product_url", preSendProductCardBundle.getString("product_url"));
-//                bodyMap.put("sales_count", preSendProductCardBundle.getLong("sales_count"));
-//                contentMap.put("type", "product_card");
-//                String content = null;
-//                try {
-//                    contentMap.put("body", MQUtils.mapToJson(bodyMap));
-//                    JSONArray contentArray = new JSONArray();
-//                    contentArray.put(MQUtils.mapToJson(contentMap));
-//                    content = contentArray.toString();
-//                } catch (Exception e) {
-//                    e.toString();
-//                }
-//                productMessage.setContent(content);
-//                delaySendList.add(productMessage);
-//            }
             // 清空 intent 里面的数据,因为排队成功可能还会再发一次,如果为空就不再发了
             getIntent().removeExtra(PRE_SEND_TEXT);
             getIntent().removeExtra(PRE_SEND_IMAGE_PATH);
@@ -2454,13 +2418,14 @@ public class MXConversationActivity
         Agent agent = mController.getCurrentAgent();
 
         if (agent != null) {
-            if (!agent.isOnline()) {
-                mTitleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.mx_shape_agent_status_offline, 0);
-            } else if (agent.isOffDuty()) {
-                mTitleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.mx_shape_agent_status_off_duty, 0);
-            } else {
-                mTitleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.mx_shape_agent_status_online, 0);
-            }
+            // 不显示在线状态
+//            if (!agent.isOnline()) {
+//                mTitleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.mx_shape_agent_status_offline, 0);
+//            } else if (agent.isOffDuty()) {
+//                mTitleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.mx_shape_agent_status_off_duty, 0);
+//            } else {
+//                mTitleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.mx_shape_agent_status_online, 0);
+//            }
 
             mEvaluateBtn.setVisibility(mController.getEnterpriseConfig().serviceEvaluationConfig.isEnableEvaluation(MXManager.getAppKey()) ? View.VISIBLE : View.GONE);
         } else {
@@ -2512,6 +2477,11 @@ public class MXConversationActivity
     @Override
     public void onSendMessage(String message) {
         sendMessage(new TextMessage(message));
+    }
+
+    @Override
+    public void photoPreview(String url) {
+        startActivity(MXPhotoPreviewActivity.newIntent(this, MXUtils.getImageDir(this), url));
     }
 
     private class MessageReceiver extends com.mixdesk.mixdesksdk.controller.MessageReceiver {
@@ -2642,8 +2612,7 @@ public class MXConversationActivity
 
             if (baseMessage instanceof VoiceMessage) {
                 mChatMsgAdapter.downloadAndNotifyDataSetChanged(Arrays.asList(baseMessage));
-            }
-            else {
+            } else {
                 mChatMsgAdapter.notifyDataSetChanged();
             }
 
@@ -2710,7 +2679,6 @@ public class MXConversationActivity
                     else {
                         changeTitleToNetErrorState();
                         addNetStatusTopTip("net_not_work");
-                        mHandler.removeMessages(WHAT_GET_CLIENT_POSITION_IN_QUEUE);
                     }
                 } else {
                     isFirstReceiveBroadcast = false;
@@ -2718,5 +2686,25 @@ public class MXConversationActivity
             }
         }
 
+    }
+
+    /**
+     * 显示完整的错误信息
+     *
+     * @param code    错误代码
+     * @param message 错误消息
+     */
+    private void showErrorMessage(int code, String message) {
+        String title = "请求失败";
+        String content = "错误代码: " + code;
+        if (message != null && !message.isEmpty()) {
+            content += "\n\n详细信息:\n" + message;
+        }
+
+        new android.app.AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(content)
+                .setPositiveButton("确定", null)
+                .show();
     }
 }

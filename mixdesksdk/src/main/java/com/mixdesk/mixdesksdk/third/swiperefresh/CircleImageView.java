@@ -58,7 +58,7 @@ class CircleImageView extends ImageView {
             circle = new ShapeDrawable(new OvalShape());
             ViewCompat.setElevation(this, SHADOW_ELEVATION * density);
         } else {
-            circle = new ShapeDrawable(new CircleImageView.OvalShadow(this, mShadowRadius));
+            circle = new ShapeDrawable(new OvalShadow(this, mShadowRadius));
             setLayerType(View.LAYER_TYPE_SOFTWARE, circle.getPaint());
             circle.getPaint().setShadowLayer(mShadowRadius, shadowXOffset, shadowYOffset,
                     KEY_SHADOW_COLOR);

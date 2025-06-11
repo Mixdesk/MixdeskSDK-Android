@@ -26,10 +26,14 @@ import java.util.Random;
 public class MainActivity extends Activity {
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
 
+    private TextView mWelcomeTv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mWelcomeTv = findViewById(R.id.welcome_tv);
+        mWelcomeTv.setText("欢迎使用 Mixdesk SDK " + MXManager.getSDKVersion());
     }
 
     /**

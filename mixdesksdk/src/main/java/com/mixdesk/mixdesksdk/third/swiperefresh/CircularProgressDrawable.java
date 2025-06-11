@@ -95,7 +95,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
     private static final float GROUP_FULL_ROTATION = 1080f / 5f;
 
     /** The indicator ring, used to manage animation state. */
-    private final CircularProgressDrawable.Ring mRing;
+    private final Ring mRing;
 
     /** Canvas rotation in degrees. */
     private float mRotation;
@@ -121,7 +121,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
     public CircularProgressDrawable(@NonNull Context context) {
         mResources = context.getResources();
 
-        mRing = new CircularProgressDrawable.Ring();
+        mRing = new Ring();
         mRing.setColors(COLORS);
 
         setStrokeWidth(STROKE_WIDTH);
@@ -131,7 +131,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
     /** Sets all parameters at once in dp. */
     private void setSizeParameters(float centerRadius, float strokeWidth, float arrowWidth,
                                    float arrowHeight) {
-        final CircularProgressDrawable.Ring ring = mRing;
+        final Ring ring = mRing;
         final DisplayMetrics metrics = mResources.getDisplayMetrics();
         final float screenDensity = metrics.density;
 
@@ -147,7 +147,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
      *
      * @param size one of {@link #LARGE} or {@link #DEFAULT}
      */
-    public void setStyle(@CircularProgressDrawable.ProgressDrawableSize int size) {
+    public void setStyle(@ProgressDrawableSize int size) {
         if (size == LARGE) {
             setSizeParameters(CENTER_RADIUS_LARGE, STROKE_WIDTH_LARGE, ARROW_WIDTH_LARGE,
                     ARROW_HEIGHT_LARGE);
@@ -481,7 +481,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
      * the next color.
      */
     @SuppressWarnings("WeakerAccess") /* synthetic access */
-    void updateRingColor(float interpolatedTime, CircularProgressDrawable.Ring ring) {
+    void updateRingColor(float interpolatedTime, Ring ring) {
         if (interpolatedTime > COLOR_CHANGE_OFFSET) {
             ring.setColor(evaluateColorChange((interpolatedTime - COLOR_CHANGE_OFFSET)
                             / (1f - COLOR_CHANGE_OFFSET), ring.getStartingColor(),
@@ -495,7 +495,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
      * Update the ring start and end trim if the animation is finishing (i.e. it started with
      * already visible progress, so needs to shrink back down before starting the spinner).
      */
-    private void applyFinishTranslation(float interpolatedTime, CircularProgressDrawable.Ring ring) {
+    private void applyFinishTranslation(float interpolatedTime, Ring ring) {
         // shrink back down and complete a full rotation before
         // starting other circles
         // Rotation goes between [0..1].
@@ -516,7 +516,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
      * Update the ring start and end trim according to current time of the animation.
      */
     @SuppressWarnings("WeakerAccess") /* synthetic access */
-    void applyTransformation(float interpolatedTime, CircularProgressDrawable.Ring ring, boolean lastFrame) {
+    void applyTransformation(float interpolatedTime, Ring ring, boolean lastFrame) {
         if (mFinishing) {
             applyFinishTranslation(interpolatedTime, ring);
             // Below condition is to work around a ValueAnimator issue where onAnimationRepeat is
@@ -549,7 +549,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
     }
 
     private void setupAnimators() {
-        final CircularProgressDrawable.Ring ring = mRing;
+        final Ring ring = mRing;
         final ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -638,7 +638,7 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
             mPaint.setAntiAlias(true);
             mPaint.setStyle(Style.STROKE);
 
-            mArrowPaint.setStyle(Paint.Style.FILL);
+            mArrowPaint.setStyle(Style.FILL);
             mArrowPaint.setAntiAlias(true);
 
             mCirclePaint.setColor(Color.TRANSPARENT);
@@ -709,8 +709,8 @@ public class CircularProgressDrawable extends Drawable implements Animatable {
         void drawTriangle(Canvas c, float startAngle, float sweepAngle, RectF bounds) {
             if (mShowArrow) {
                 if (mArrow == null) {
-                    mArrow = new android.graphics.Path();
-                    mArrow.setFillType(android.graphics.Path.FillType.EVEN_ODD);
+                    mArrow = new Path();
+                    mArrow.setFillType(Path.FillType.EVEN_ODD);
                 } else {
                     mArrow.reset();
                 }

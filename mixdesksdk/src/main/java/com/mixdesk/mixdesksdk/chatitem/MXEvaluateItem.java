@@ -27,11 +27,11 @@ import java.util.List;
 public class MXEvaluateItem extends MXBaseCustomCompositeView {
     private ImageView mLevelProblemIv;
     private TextView mLevelProblemTv;
-
     private ImageView mLevelIv;
     private TextView mLevelTv;
     private TextView mContentTv;
     private LinearLayout mTagsContainer;
+
 
     public MXEvaluateItem(Context context) {
         super(context);
@@ -67,23 +67,26 @@ public class MXEvaluateItem extends MXBaseCustomCompositeView {
     }
 
     public void setMessage(EvaluateMessage evaluateMessage) {
-        if (evaluateMessage.isSolved() == -1) {
-            mLevelProblemTv.setVisibility(View.GONE);
-            mLevelProblemIv.setVisibility(View.GONE);
-        }
+        mLevelProblemTv.setVisibility(View.GONE);
+        mLevelProblemIv.setVisibility(View.GONE);
         if (evaluateMessage.isSolved() == 1) {
             mLevelProblemTv.setText(R.string.mx_problem_solved);
-            mLevelProblemIv.setImageResource(R.drawable.mx_evaluate_solved);
-        } else {
+            mLevelProblemIv.setImageResource(R.drawable.mx_evaluate_solved_line_color);
+            mLevelProblemTv.setVisibility(View.VISIBLE);
+            mLevelProblemIv.setVisibility(View.VISIBLE);
+        } else if (evaluateMessage.isSolved() == 0) {
             mLevelProblemTv.setText(R.string.mx_problem_unsolved);
-            mLevelProblemIv.setImageResource(R.drawable.mx_evaluate_unsolved);
+            mLevelProblemIv.setImageResource(R.drawable.mx_evaluate_unsolved_line_color);
+            mLevelProblemIv.setPadding(0, MXUtils.dip2px(getContext(), 2), 0, 0);
+            mLevelProblemTv.setVisibility(View.VISIBLE);
+            mLevelProblemIv.setVisibility(View.VISIBLE);
         }
 
         int bitMapCol = evaluateMessage.getLevel() + 1;
         if (evaluateMessage.getEvaluateLevel() == 3) {
-            if(evaluateMessage.getLevel() == 1){
+            if (evaluateMessage.getLevel() == 0) {
                 bitMapCol = 1;
-            } else if(evaluateMessage.getLevel() == 1){
+            } else if (evaluateMessage.getLevel() == 1) {
                 bitMapCol = 3;
             } else if (evaluateMessage.getLevel() == 2) {
                 bitMapCol = 5;

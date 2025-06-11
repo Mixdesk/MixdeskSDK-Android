@@ -25,6 +25,7 @@ import com.mixdesk.mixdesksdk.imageloader.MXImage;
 import com.mixdesk.mixdesksdk.imageloader.MXImageLoader;
 import com.mixdesk.mixdesksdk.model.BaseMessage;
 import com.mixdesk.mixdesksdk.model.HybridMessage;
+import com.mixdesk.mixdesksdk.model.PhotoMessage;
 import com.mixdesk.mixdesksdk.util.MXConfig;
 import com.mixdesk.mixdesksdk.util.MXUtils;
 import com.mixdesk.mixdesksdk.util.RichText;
@@ -154,10 +155,10 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
             for (int i = 0; i < contentArray.length(); i++) {
                 JSONObject item = contentArray.getJSONObject(i);
                 String type = item.getString("type");
+                String subType = item.optString("sub_type");
                 switch (type) {
                     case "rich_text":
                     case "text":
-                        String subType = item.optString("sub_type");
                         if (TextUtils.equals(subType, "button")) {
                             addOptionView(item.optJSONArray("tags"));
                         } else if (TextUtils.equals(subType, MXMessage.SUB_TYPE_QUICK_BTN)) {
@@ -183,6 +184,13 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
                         break;
                     case "option": // 用户反馈按钮
                         addOptionView(item.optJSONArray("option"));
+                        break;
+                    case "photo":
+                        if (TextUtils.equals(subType, MXMessage.SUB_TYPE_QUICK_BTN)) {
+                            JSONArray quickBtns = new JSONObject(mHybridMessage.getExtra()).optJSONArray("quick_btn");
+                            addPhotoView(item.optString("body"));
+                            addOperableButton(quickBtns);
+                        }
                         break;
                     default:
                         addNormalOrRichTextView(getContext().getString(R.string.mx_unknown_msg_tip));
@@ -469,6 +477,28 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
         }
     }
 
+    private void addPhotoView(String photoUrl){
+        int screenWidth = MXUtils.getScreenWidth(getContext());
+        int mImageWidth = screenWidth / 3;
+        int mImageHeight = mImageWidth;
+
+        ImageView iv = new ImageView(getContext());
+        iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        iv.setAdjustViewBounds(true);
+        MXImage.displayImage((Activity) getContext(), iv, photoUrl, R.drawable.mx_ic_holder_light, R.drawable.mx_ic_holder_light, mImageWidth, mImageHeight, new MXImageLoader.MQDisplayImageListener() {
+            @Override
+            public void onSuccess(View view, final String sucUrl) {
+                view.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        mOnCallbackListener.photoPreview(photoUrl);
+                    }
+                });
+            }
+        });
+        mContainerLl.addView(iv);
+    }
+
     private void addQuickButtonView(String text, JSONArray operableButtonsJson) {
         TextView textView = new TextView(getContext());
         textView.setText(text);
@@ -484,6 +514,10 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
         RichText richText = new RichText();
         richText.fromHtml(text).setOnImageClickListener(this).into(textView);
 
+        addOperableButton(operableButtonsJson);
+    }
+
+    private void addOperableButton(JSONArray operableButtonsJson) {
         // 添加操作按钮
         try {
             if (operableButtonsJson != null && operableButtonsJson.length() != 0) {
@@ -540,10 +574,18 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
                                     }
                                 } else if (type == 4) { // 发送消息
                                     mOnCallbackListener.onSendMessage(name);
+                                    // 延时500ms 让消息先于onQuickBtnClicked发出去
+                                    operationView.postDelayed(() -> {
+                                        // 延时后执行的操作
+                                    }, 500);
                                 } else if (type == 5) { // 图片浮层
                                     onImageClicked(value, "");
                                 } else if (type == 6) { // 自助问答 - 不需要处理什么，直接在clicked中会自动回复回来
-
+                                    mOnCallbackListener.onSendMessage(name);
+                                    // 延时500ms 让消息先于onQuickBtnClicked发出去
+                                    operationView.postDelayed(() -> {
+                                        // 延时后执行的操作
+                                    }, 500);
                                 }
                                 mOnCallbackListener.onQuickBtnClicked(mHybridMessage.getConvId(), quickBtnId);
                             } catch (Exception e) {
@@ -574,5 +616,12 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
          * @param message 消息内容
          */
         void onSendMessage(String message);
+
+        /**
+         * 预览图片
+         *
+         * @param url 图片路径
+         */
+        void photoPreview(String url);
     }
 }
