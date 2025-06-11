@@ -97,7 +97,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
     private static final int DEFAULT_CIRCLE_TARGET = 64;
 
     private View mTarget; // the target of the gesture
-    SwipeRefreshLayout.OnRefreshListener mListener;
+    OnRefreshListener mListener;
     boolean mRefreshing = false;
     private int mTouchSlop;
     private float mTotalDragDistance = -1;
@@ -166,12 +166,12 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
     // Whether the client has set a custom starting position;
     boolean mUsingCustomStart;
 
-    private SwipeRefreshLayout.OnChildScrollUpCallback mChildScrollUpCallback;
+    private OnChildScrollUpCallback mChildScrollUpCallback;
 
     /** @see #setLegacyRequestDisallowInterceptTouchEventEnabled */
     private boolean mEnableLegacyRequestDisallowInterceptTouch;
 
-    private Animation.AnimationListener mRefreshListener = new Animation.AnimationListener() {
+    private AnimationListener mRefreshListener = new AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
         }
@@ -220,7 +220,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
         }
     }
 
-    static class SavedState extends View.BaseSavedState {
+    static class SavedState extends BaseSavedState {
         final boolean mRefreshing;
 
         /**
@@ -245,16 +245,16 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
             out.writeByte(mRefreshing ? (byte) 1 : (byte) 0);
         }
 
-        public static final Parcelable.Creator<SwipeRefreshLayout.SavedState> CREATOR =
-                new Parcelable.Creator<SwipeRefreshLayout.SavedState>() {
+        public static final Creator<SavedState> CREATOR =
+                new Creator<SavedState>() {
                     @Override
-                    public SwipeRefreshLayout.SavedState createFromParcel(Parcel in) {
-                        return new SwipeRefreshLayout.SavedState(in);
+                    public SavedState createFromParcel(Parcel in) {
+                        return new SavedState(in);
                     }
 
                     @Override
-                    public SwipeRefreshLayout.SavedState[] newArray(int size) {
-                        return new SwipeRefreshLayout.SavedState[size];
+                    public SavedState[] newArray(int size) {
+                        return new SavedState[size];
                     }
                 };
     }
@@ -262,12 +262,12 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
     @Override
     protected Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
-        return new SwipeRefreshLayout.SavedState(superState, mRefreshing);
+        return new SavedState(superState, mRefreshing);
     }
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        SwipeRefreshLayout.SavedState savedState = (SwipeRefreshLayout.SavedState) state;
+        SavedState savedState = (SavedState) state;
         super.onRestoreInstanceState(savedState.getSuperState());
         setRefreshing(savedState.mRefreshing);
     }
@@ -454,7 +454,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
      * Set the listener to be notified when a refresh is triggered via the swipe
      * gesture.
      */
-    public void setOnRefreshListener(@Nullable SwipeRefreshLayout.OnRefreshListener listener) {
+    public void setOnRefreshListener(@Nullable OnRefreshListener listener) {
         mListener = listener;
     }
 
@@ -521,7 +521,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
         }
     }
 
-    void startScaleDownAnimation(Animation.AnimationListener listener) {
+    void startScaleDownAnimation(AnimationListener listener) {
         mScaleDownAnimation = new Animation() {
             @Override
             public void applyTransformation(float interpolatedTime, Transformation t) {
@@ -730,7 +730,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
      * callback will return the value provided by the callback and ignore all internal logic.
      * @param callback Callback that should be called when canChildScrollUp() is called.
      */
-    public void setOnChildScrollUpCallback(@Nullable SwipeRefreshLayout.OnChildScrollUpCallback callback) {
+    public void setOnChildScrollUpCallback(@Nullable OnChildScrollUpCallback callback) {
         mChildScrollUpCallback = callback;
     }
 
@@ -1179,9 +1179,9 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
             // cancel refresh
             mRefreshing = false;
             mProgress.setStartEndTrim(0f, 0f);
-            Animation.AnimationListener listener = null;
+            AnimationListener listener = null;
             if (!mScale) {
-                listener = new Animation.AnimationListener() {
+                listener = new AnimationListener() {
 
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -1355,7 +1355,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
     };
 
     private void startScaleDownReturnToStartAnimation(int from,
-                                                      Animation.AnimationListener listener) {
+                                                      AnimationListener listener) {
         mFrom = from;
         mStartingScale = mCircleView.getScaleX();
         mScaleDownToStartAnimation = new Animation() {

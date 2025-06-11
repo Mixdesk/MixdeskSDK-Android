@@ -111,6 +111,7 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
         this.isSolvedVal = -1;
         this.selectedLevel = -1;
         this.selectedTagIds.clear();
+        this.clear();
 
         if (!TextUtils.isEmpty(tip)) {
             mTipTv.setText(tip);
@@ -131,7 +132,7 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     MXUtils.dip2px(activity, 44),
                     MXUtils.dip2px(activity, 44));
-            params.setMargins(MXUtils.dip2px(activity, 10), 0, 0, 0);
+            params.setMargins(MXUtils.dip2px(activity, 2), 0, 0, 0);
             levelImage.setLayoutParams(params);
 
             // 设置level图片
@@ -280,9 +281,11 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
             List<MXEvaluateConfig> copyEvaluateConfig = new ArrayList<>(evaluateConfig);
             mCallback.executeEvaluate(isSolvedVal, selectedLevel, copySelectedTagIds, content, evaluateLevel, copyEvaluateConfig);
             clear();
+            MXUtils.closeKeyboard(this);
         } else if (v.getId() == R.id.tv_evaluate_cancel) {
             dismiss();
             clear();
+            MXUtils.closeKeyboard(this);
         }
     }
 
@@ -297,8 +300,9 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
 
         layoutSolved.setSelected(false);
         layoutUnsolved.setSelected(false);
-
-        MXUtils.closeKeyboard(this);
+        int unselectedColor = getContext().getResources().getColor(R.color.mx_evaluate_hint);
+        ((TextView) findViewById(R.id.tv_solved)).setTextColor(unselectedColor);
+        ((TextView) findViewById(R.id.tv_unsolved)).setTextColor(unselectedColor);
     }
 
     public void setCallback(Callback callback) {

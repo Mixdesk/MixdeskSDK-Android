@@ -275,14 +275,40 @@ public class MXUtils {
                 Log.e("mixdesk_log", e.toString());
             }
         } else if (MXMessage.TYPE_CONTENT_PHOTO.equals(message.getContent_type())) {
-            // message.getMedia_url() 可能是本地路径
             baseMessage = new PhotoMessage();
+            String url = message.getMedia_url();
             if (isLocalPath(message.getMedia_url())) {
                 ((PhotoMessage) baseMessage).setLocalPath(message.getMedia_url());
             } else {
                 ((PhotoMessage) baseMessage).setUrl(message.getMedia_url());
             }
-            baseMessage.setContent("[photo]");
+            try {
+                if (!TextUtils.isEmpty(message.getExtra())) {
+                    JSONObject extraObj = new JSONObject(message.getExtra());
+                    JSONArray quickBtn = extraObj.optJSONArray("quick_btn");
+                    if (quickBtn != null && quickBtn.length() != 0) {
+                        JSONArray contentArray = new JSONArray();
+                        JSONObject contentObj = new JSONObject();
+                        try {
+                            contentObj.put("type", "photo");
+                            contentObj.put("sub_type", message.getSub_type());
+                            contentObj.put("body", url);
+                            contentArray.put(contentObj);
+                        } catch (Exception ignore) {
+
+                        }
+                        baseMessage = new HybridMessage();
+                        baseMessage.setContent(contentArray.toString());
+                        ((HybridMessage) baseMessage).setExtra(message.getExtra());
+                        message.setContent_type(MXMessage.TYPE_CONTENT_RICH_TEXT);
+                    }
+                } else {
+                    baseMessage.setContent("[photo]");
+                }
+            } catch (Exception e) {
+                Log.e("mixdesk_log", e.toString());
+            }
+
         } else if (MXMessage.TYPE_CONTENT_VOICE.equals(message.getContent_type())) {
             baseMessage = new VoiceMessage(message.getMedia_url());
             // message.getMedia_url() 可能是本地路径

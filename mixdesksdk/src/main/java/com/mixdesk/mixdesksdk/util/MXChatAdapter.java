@@ -118,27 +118,12 @@ public class MXChatAdapter extends BaseAdapter implements MXBaseBubbleItem.Callb
                 case BaseMessage.TYPE_EVALUATE:
                     convertView = new MXEvaluateItem(mConversationActivity);
                     break;
-//                case BaseMessage.TYPE_ROBOT:
-//                    convertView = new MQRobotItem(mConversationActivity, mConversationActivity);
-//                    break;
                 case BaseMessage.TYPE_HYBRID:
                     convertView = new MXHybridItem(mConversationActivity, mConversationActivity);
                     break;
-//                case BaseMessage.TYPE_NO_AGENT_TIP:
-//                    convertView = new MQNoAgentItem(mConversationActivity);
-//                    break;
-//                case BaseMessage.TYPE_INITIATIVE_REDIRECT_TIP:
-//                    convertView = new MQInitiativeRedirectItem(mConversationActivity);
-//                    break;
-//                case BaseMessage.TYPE_QUEUE_TIP:
-//                    convertView = new MQRedirectQueueItem(mConversationActivity, mConversationActivity);
-//                    break;
                 case BaseMessage.TYPE_RICH_TEXT:
                     convertView = new MXHybridItem(mConversationActivity, mConversationActivity);
                     break;
-//                case BaseMessage.TYPE_CLUE_CARD:
-//                    convertView = new MQClueCardItem(mConversationActivity, this);
-//                    break;
                 case BaseMessage.TYPE_CONV_DIVIDER:
                     convertView = new MXConvDividerItem(mConversationActivity, mcMessage.getCreatedOn());
                     break;
@@ -149,31 +134,16 @@ public class MXChatAdapter extends BaseAdapter implements MXBaseBubbleItem.Callb
             ((MXAgentItem) convertView).setMessage(mcMessage, position, mConversationActivity);
         } else if (getItemViewType(position) == BaseMessage.TYPE_CLIENT) {
             ((MXClientItem) convertView).setMessage(mcMessage, position, mConversationActivity);
-//        } else if (getItemViewType(position) == BaseMessage.TYPE_NO_AGENT_TIP) {
-//            ((MQNoAgentItem) convertView).setCallback(mConversationActivity);
-//            ((MQNoAgentItem) convertView).setContent(mcMessage.getContent());
-//        } else if (getItemViewType(position) == BaseMessage.TYPE_ROBOT) {
-//            ((MQRobotItem) convertView).setMessage((RobotMessage) mcMessage, mConversationActivity);
         } else if (getItemViewType(position) == BaseMessage.TYPE_HYBRID) {
-//            // 商品卡片不复用
-//            if (MQUtils.isProductCardMessage(mcMessage)) {
-//                convertView = new MQHybridItem(mConversationActivity, mConversationActivity);
-//            }
             ((MXHybridItem) convertView).setMessage((HybridMessage) mcMessage, mConversationActivity);
-//        } else if (getItemViewType(position) == BaseMessage.TYPE_INITIATIVE_REDIRECT_TIP) {
-//            ((MQInitiativeRedirectItem) convertView).setMessage((InitiativeRedirectMessage) mcMessage, mConversationActivity);
         } else if (getItemViewType(position) == BaseMessage.TYPE_TIME) {
             ((MXTimeItem) convertView).setMessage(mcMessage);
         } else if (getItemViewType(position) == BaseMessage.TYPE_TIP) {
             ((MXTipItem) convertView).setMessage(mcMessage);
         } else if (getItemViewType(position) == BaseMessage.TYPE_EVALUATE) {
             ((MXEvaluateItem) convertView).setMessage((EvaluateMessage) mcMessage);
-//        } else if (getItemViewType(position) == BaseMessage.TYPE_QUEUE_TIP) {
-//            ((MQRedirectQueueItem) convertView).setMessage((RedirectQueueMessage) mcMessage);
         } else if (getItemViewType(position) == BaseMessage.TYPE_RICH_TEXT) {
             ((MXHybridItem) convertView).setMessage((HybridMessage) mcMessage, mConversationActivity);
-//        } else if (getItemViewType(position) == BaseMessage.TYPE_CLUE_CARD) {
-//            ((MQClueCardItem) convertView).setMessage((ClueCardMessage) mcMessage, mConversationActivity);
         }
 
         return convertView;

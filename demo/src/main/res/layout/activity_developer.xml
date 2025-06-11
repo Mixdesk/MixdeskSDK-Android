@@ -48,16 +48,6 @@
                 style="@style/DemoTv"
                 android:text="获取一个全新的Mixdesk ID" />
 
-<!--            <Button-->
-<!--                android:id="@+id/set_specified_agent_token_btn"-->
-<!--                style="@style/DemoTv"-->
-<!--                android:text="输入一个客服 ID 进行指定分配" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/set_specified_agent_group_token_btn"-->
-<!--                style="@style/DemoTv"-->
-<!--                android:text="输入一个客服组 ID 进行指定分配" />-->
-
             <Button
                 android:id="@+id/set_client_info"
                 style="@style/DemoTv"
@@ -77,6 +67,11 @@
                 android:id="@+id/end_conversation_btn"
                 style="@style/DemoTv"
                 android:text="结束当前对话" />
+
+            <Button
+                android:id="@+id/get_current_agent_info_btn"
+                style="@style/DemoTv"
+                android:text="获取当前正在接待的客服信息" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

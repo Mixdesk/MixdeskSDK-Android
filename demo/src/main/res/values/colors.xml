@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<color name="colorPrimary">#4ca0ff</color>-->
-    <!--<color name="colorPrimaryDark">@color/colorPrimary</color>-->
+<!--    <color name="colorPrimary">#4ca0ff</color>-->
+<!--    <color name="colorPrimaryDark">@color/colorPrimary</color>-->
 
-    <!--<color name="test_red">#fc5369</color>-->
-    <!--<color name="test_green">#00ce7d</color>-->
-    <!--<color name="test_blue">#50a3fc</color>-->
+<!--    <color name="test_red">#fc5369</color>-->
+<!--    <color name="test_green">#00ce7d</color>-->
+<!--    <color name="test_blue">#50a3fc</color>-->
 
 
-    <!--&lt;!&ndash;通过覆盖资源id的形式自定义MixdeskUI START&ndash;&gt;-->
-    <!--<color name="mx_colorPrimary">@color/colorPrimary</color>-->
-    <!--<color name="mx_colorPrimaryDark">@color/colorPrimaryDark</color>-->
+<!--    &lt;!&ndash;通过覆盖资源id的形式自定义MixdeskUI START&ndash;&gt;-->
+<!--    <color name="mx_colorPrimary">@color/colorPrimary</color>-->
+<!--    <color name="mx_colorPrimaryDark">@color/colorPrimaryDark</color>-->
 
-    <!--<color name="mx_activity_title_textColor">@android:color/white</color>-->
-    <!--<color name="mx_activity_title_bg">@color/colorPrimary</color>-->
+<!--    <color name="mx_activity_title_textColor">@android:color/white</color>-->
+<!--    <color name="mx_activity_title_bg">@color/colorPrimary</color>-->
 
-    <!--<color name="mx_chat_left_textColor">@android:color/black</color>-->
-    <!--<color name="mx_chat_right_textColor">@android:color/white</color>-->
+<!--    <color name="mx_chat_left_textColor">@android:color/black</color>-->
+<!--    <color name="mx_chat_right_textColor">@android:color/white</color>-->
 
-    <!--<color name="mx_chat_robot_menu_item_textColor">@android:color/white</color>-->
-    <!--<color name="mx_chat_robot_menu_tip_textColor">#ffbbbb</color>-->
-    <!--<color name="mx_chat_robot_evaluate_textColor">@android:color/white</color>-->
+<!--    <color name="mx_chat_robot_menu_item_textColor">@android:color/white</color>-->
+<!--    <color name="mx_chat_robot_menu_tip_textColor">#ffbbbb</color>-->
+<!--    <color name="mx_chat_robot_evaluate_textColor">@android:color/white</color>-->
 
-    <!--<color name="mx_chat_left_bubble">@color/test_green</color>-->
-    <!--<color name="mx_chat_right_bubble">@color/colorPrimary</color>-->
+<!--    <color name="mx_chat_left_bubble">@color/test_green</color>-->
+<!--    <color name="mx_chat_right_bubble">@color/colorPrimary</color>-->
     <!--通过覆盖资源id的形式自定义MixdeskUI END-->
 </resources>

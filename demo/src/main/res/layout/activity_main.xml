@@ -4,6 +4,14 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/welcome_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        android:text="欢迎使用Mixdesk SDK" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,6 +22,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="16dp"
             android:src="@drawable/ic_logo" />
+
     </RelativeLayout>
 
     <ScrollView

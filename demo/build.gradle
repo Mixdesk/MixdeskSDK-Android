@@ -11,6 +11,9 @@ android {
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
+        
+        // 注入 mixdeskAppKey，可以通过 gradle 属性或环境变量传入
+        buildConfigField "String", "MIXDESK_APP_KEY", "\"${project.findProperty('mixdeskAppKey') ?: System.getenv('MIXDESK_APP_KEY') ?: ''}\""
     }
 
     buildFeatures {
@@ -48,8 +51,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    implementation 'com.mixdesk:androidx:0.0.3'
+    implementation 'com.mixdesk:androidx:1.0.0'
 //    implementation project(path: ':mixdesksdk')
 }

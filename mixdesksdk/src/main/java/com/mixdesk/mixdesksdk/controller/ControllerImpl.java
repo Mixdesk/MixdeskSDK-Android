@@ -25,10 +25,6 @@ import com.mixdesk.mixdesksdk.model.VideoMessage;
 import com.mixdesk.mixdesksdk.model.VoiceMessage;
 import com.mixdesk.mixdesksdk.util.MXUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.List;
 import java.util.Map;
 
@@ -64,31 +60,19 @@ public class ControllerImpl implements MXController {
         // 开始发送
         if (BaseMessage.TYPE_CONTENT_TEXT.equals(message.getContentType())) {
             String content = message.getContent();
-            MXManager.getInstance(context).sendMQTextMessage(content, onMQMessageSendCallback);
+            MXManager.getInstance(context).sendTextMessage(content, onMQMessageSendCallback);
         } else if (BaseMessage.TYPE_CONTENT_PHOTO.equals(message.getContentType())) {
             PhotoMessage photoMessage = (PhotoMessage) message;
-            MXManager.getInstance(context).sendMQPhotoMessage(photoMessage.getLocalPath(), onMQMessageSendCallback);
+            MXManager.getInstance(context).sendPhotoMessage(photoMessage.getLocalPath(), onMQMessageSendCallback);
         } else if (BaseMessage.TYPE_CONTENT_VOICE.equals(message.getContentType())) {
             VoiceMessage voiceMessage = (VoiceMessage) message;
-            MXManager.getInstance(context).sendMQVoiceMessage(voiceMessage.getLocalPath(), onMQMessageSendCallback);
+            MXManager.getInstance(context).sendVoiceMessage(voiceMessage.getLocalPath(), onMQMessageSendCallback);
         } else if (BaseMessage.TYPE_CONTENT_VIDEO.equals(message.getContentType())) {
             VideoMessage voiceMessage = (VideoMessage) message;
-            MXManager.getInstance(context).sendMQVideoMessage(voiceMessage.getLocalPath(), onMQMessageSendCallback);
+            MXManager.getInstance(context).sendVideoMessage(voiceMessage.getLocalPath(), onMQMessageSendCallback);
         } else if (BaseMessage.TYPE_CONTENT_HYBRID.equals(message.getContentType())) {
-            try {
-                JSONArray contentObj = new JSONArray(message.getContent());
-                JSONObject body = contentObj.getJSONObject(0).optJSONObject("body");
-                String title = body.optString("title");
-                String desc = body.optString("description");
-                String productUrl = body.optString("product_url");
-                String picUrl = body.optString("pic_url");
-                long saleCount = body.optLong("sales_count");
-                MXManager.getInstance(context).sendMQProductCardMessage(title, desc, picUrl, productUrl, saleCount, onMQMessageSendCallback);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                message.setStatus(BaseMessage.STATE_FAILED);
-                onMessageSendCallback.onFailure(message, 0, "");
-            }
+            message.setStatus(BaseMessage.STATE_FAILED);
+            onMessageSendCallback.onFailure(message, 0, "");
         }
     }
 
@@ -118,7 +102,7 @@ public class ControllerImpl implements MXController {
 
     @Override
     public void getMessageFromService(long lastMessageCreateOn, int length, final OnGetMessageListCallBack onGetMessageListCallBack) {
-        MXManager.getInstance(context).getMQMessageFromService(lastMessageCreateOn, length, new OnGetMessageListCallback() {
+        MXManager.getInstance(context).getMessageFromService(lastMessageCreateOn, length, new OnGetMessageListCallback() {
             @Override
             public void onSuccess(List<MXMessage> MXMessageList) {
                 List<BaseMessage> messageList = MXUtils.parseMQMessageToChatBaseList(MXMessageList);
@@ -138,7 +122,7 @@ public class ControllerImpl implements MXController {
 
     @Override
     public void getMessagesFromDatabase(long lastMessageCreateOn, int length, final OnGetMessageListCallBack onGetMessageListCallBack) {
-        MXManager.getInstance(context).getMQMessageFromDatabase(lastMessageCreateOn, length, new OnGetMessageListCallback() {
+        MXManager.getInstance(context).getMessageFromDatabase(lastMessageCreateOn, length, new OnGetMessageListCallback() {
 
             @Override
             public void onSuccess(List<MXMessage> MXMessageList) {
@@ -355,12 +339,12 @@ public class ControllerImpl implements MXController {
 
     @Override
     public void closeService() {
-        MXManager.getInstance(context).closeMixdeskService();
+        MXManager.getInstance(context).closeService();
     }
 
     @Override
     public void openService() {
-        MXManager.getInstance(context).openMixdeskService();
+        MXManager.getInstance(context).openService();
     }
 
     @Override

@@ -12,6 +12,8 @@ import android.net.Uri;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
+
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -36,8 +38,6 @@ import com.mixdesk.mixdesksdk.util.MXUtils;
  */
 
 public class MXGlideImageLoader4 extends MXImageLoader {
-
-//    private MQGlideImageLoader3 mGlideImageLoader3;
 
     public MXGlideImageLoader4() {
 
@@ -66,11 +66,7 @@ public class MXGlideImageLoader4 extends MXImageLoader {
                     })
                     .into(imageView);
         } catch (Error noSuchMethodError) {
-//            // 自启启用 Glide3
-//            if (mGlideImageLoader3 == null) {
-//                mGlideImageLoader3 = new MQGlideImageLoader3();
-//            }
-//            mGlideImageLoader3.displayImage(activity, imageView, path, loadingResId, failResId, width, height, displayImageListener);
+            Log.e("mixdesk_log", noSuchMethodError.toString());
         }
     }
 
@@ -96,11 +92,7 @@ public class MXGlideImageLoader4 extends MXImageLoader {
                     })
                     .into(imageView);
         } catch (Error noSuchMethodError) {
-//            // 自启启用 Glide3
-//            if (mGlideImageLoader3 == null) {
-//                mGlideImageLoader3 = new MQGlideImageLoader3();
-//            }
-//            mGlideImageLoader3.displayImage(activity, imageView, uri, loadingResId, failResId, width, height, displayImageListener);
+            Log.e("mixdesk_log", noSuchMethodError.toString());
         }
     }
 
@@ -125,11 +117,7 @@ public class MXGlideImageLoader4 extends MXImageLoader {
                 }
             });
         } catch (Error error) {
-//            // 自启启用 Glide3
-//            if (mGlideImageLoader3 == null) {
-//                mGlideImageLoader3 = new MQGlideImageLoader3();
-//            }
-//            mGlideImageLoader3.downloadImage(context, path, downloadImageListener);
+            Log.e("mixdesk_log", error.toString());
         }
     }
 }

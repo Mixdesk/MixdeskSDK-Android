@@ -12,59 +12,59 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.mixdesk.mixdesksdk.widget.MXEvaluateFlowLayout
+            android:id="@+id/flow_layout_evaluate"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="32dp"
                 android:gravity="center"
-                android:layout_marginRight="8dp"
                 android:text="@string/mx_evaluate_already_evaluate"
                 android:textColor="@color/mx_chat_event_gray"
                 android:textSize="@dimen/mx_textSize_level1"/>
 
             <ImageView
                 android:id="@+id/iv_msg_evaluate_problem"
-                android:layout_width="@dimen/mx_textSize_level1"
-                android:layout_height="@dimen/mx_textSize_level1"
-                android:src="@drawable/mx_ic_smiling_face" />
+                android:layout_width="@dimen/mx_textSize_rich_text"
+                android:layout_height="@dimen/mx_textSize_rich_text"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/mx_evaluate_solved_line_color" />
 
             <TextView
                 android:id="@+id/tv_problem_content"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="32dp"
                 android:gravity="center"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="4dp"
                 android:text=""
                 android:textColor="@color/mx_chat_event_gray"
                 android:textSize="@dimen/mx_textSize_level1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_msg_evaluate_level"
                 android:layout_width="@dimen/mx_size_level8"
                 android:layout_height="@dimen/mx_size_level8"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                android:paddingBottom="6dp"
+                android:layout_marginLeft="4dp"
                 android:src="@drawable/mx_ic_smiling_face" />
 
             <TextView
                 android:id="@+id/tv_msg_evaluate_level_content"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="32dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
                 android:text=""
                 android:textColor="@color/mx_chat_event_gray"
                 android:textSize="@dimen/mx_textSize_level1" />
-        </LinearLayout>
+
+        </com.mixdesk.mixdesksdk.widget.MXEvaluateFlowLayout>
     </LinearLayout>
 
     <LinearLayout

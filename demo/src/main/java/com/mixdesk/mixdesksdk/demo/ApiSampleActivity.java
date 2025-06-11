@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mixdesk.core.MXManager;
+import com.mixdesk.core.bean.MXAgent;
 import com.mixdesk.core.bean.MXMessage;
 import com.mixdesk.core.callback.OnEndConversationCallback;
 import com.mixdesk.core.callback.OnGetMQClientIdCallBackOn;
@@ -40,6 +41,7 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
     private View getUnreadMessageBtn;
     private View offlineClientBtn;
     private View endConversationBtn;
+    private View getCurrentAgentInfoBtn;
 
     private MXManager MXManager;
 
@@ -65,6 +67,7 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
         getUnreadMessageBtn = findViewById(R.id.get_unread_message_btn);
         offlineClientBtn = findViewById(R.id.set_client_offline_btn);
         endConversationBtn = findViewById(R.id.end_conversation_btn);
+        getCurrentAgentInfoBtn = findViewById(R.id.get_current_agent_info_btn);
     }
 
     private void setListeners() {
@@ -76,6 +79,7 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
         getUnreadMessageBtn.setOnClickListener(this);
         offlineClientBtn.setOnClickListener(this);
         endConversationBtn.setOnClickListener(this);
+        getCurrentAgentInfoBtn.setOnClickListener(this);
     }
 
     @Override
@@ -84,6 +88,7 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
         // 使用当前顾客上线
         if (id == R.id.set_current_client_id_online_btn) {
             MXConfig.registerController(new ControllerImpl(this));
+            MXManager.getInstance(this).registerDeviceToken("registertoken,token;token", null);
             Intent intent = new MXIntentBuilder(this).build();
             startActivity(intent);
             // 使用指定 Mixdesk顾客id 上线
@@ -116,7 +121,7 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
             });
             // 获取一个新的Mixdesk ID
         } else if (id == R.id.get_new_mixdesk_id_btn) {
-            MXManager.getInstance(this).createMQClient(new OnGetMQClientIdCallBackOn() {
+            MXManager.getInstance(this).createClient(new OnGetMQClientIdCallBackOn() {
                 @Override
                 public void onSuccess(String mqClientId) {
                     toast("成功复制到剪贴板 :\n" + mqClientId);
@@ -206,6 +211,20 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
                     toast("endCurrentConversation failed:\n" + message);
                 }
             });
+        } else if (id == R.id.get_current_agent_info_btn) {
+            MXAgent mxAgent = MXManager.getInstance(this).getCurrentAgent();
+            if (mxAgent != null) {
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+                alertBuilder.setTitle("当前客服信息");
+                alertBuilder.setMessage("id:" + mxAgent.getId() + "\n" +
+                        "name:" + mxAgent.getNickname() + "\n" +
+                        "avatar:" + mxAgent.getAvatar() + "\n" +
+                        "agentId:" + mxAgent.getAgentId() + "\n");
+                AlertDialog dialog = alertBuilder.create();
+                dialog.show();
+            } else {
+                toast("没有当前客服");
+            }
         }
     }
 
