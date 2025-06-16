@@ -96,4 +96,4 @@ MXConfig.setActivityLifecycleCallback(new MXSimpleActivityLifecycleCallback() {
 ## 全部文档
 [查看详情][1]
 
- [1]: https://mixdesk.com/help/docs/mixdesk-android-sdk/
+ [1]: https://mixdesk.com/help/docs/sdk-for-android/
