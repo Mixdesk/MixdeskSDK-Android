@@ -86,7 +86,8 @@ public class MainActivity extends Activity {
     }
 
     private void conversation() {
-        MXConfig.isShowClientAvatar = true;
+        MXConfig.isShowClientAvatar = false;
+        MXConfig.isShowAgentAvatar = false;
         HashMap<String, String> clientInfo = new HashMap<>();
         clientInfo.put("name", "rd_71041066");
         clientInfo.put("avatar", "https://img.cdeledu.com/FAQ/2021/1108/6df81c168d904c65-0_chg.jpg");

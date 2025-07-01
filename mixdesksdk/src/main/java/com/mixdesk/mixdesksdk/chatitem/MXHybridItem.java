@@ -133,7 +133,9 @@ public class MXHybridItem extends MXBaseCustomCompositeView implements RichText.
                 mRootLl.addView(secondVIew);
             }
         } else {
-            mAvatarIv.setVisibility(VISIBLE);
+            if (!MXConfig.isShowAgentAvatar) {
+                mAvatarIv.setVisibility(GONE);
+            }
             mRootLl.setGravity(Gravity.LEFT);
             // 头像需要调整到左边
             if (firstView instanceof LinearLayout) {

@@ -1244,7 +1244,7 @@ public class MXConversationActivity
                 message.setAvatar(clientAvatarUrl);
             }
             // 补充没有头像的欢迎消息、企业消息
-            if (!TextUtils.equals(message.getFromType(), BaseMessage.TYPE_FROM_CLIENT)
+            if (MXConfig.isShowAgentAvatar && !TextUtils.equals(message.getFromType(), BaseMessage.TYPE_FROM_CLIENT)
                     && TextUtils.isEmpty(message.getAvatar())) {
                 message.setAvatar(mController.getEnterpriseConfig().avatar);
             }
@@ -1572,7 +1572,7 @@ public class MXConversationActivity
                             new OnEvaluateConfigCallback() {
                                 @Override
                                 public void onFailure(int code, String message) {
-                                    MXUtils.show(MXConversationActivity.this, R.string.mx_evaluate_failure);
+                                    MXUtils.showSafe(MXConversationActivity.this, R.string.mx_evaluate_failure);
                                 }
 
                                 @Override
@@ -1593,7 +1593,7 @@ public class MXConversationActivity
 
                 @Override
                 public void onFailure(int code, String message) {
-                    MXUtils.show(MXConversationActivity.this, R.string.mx_evaluate_failure);
+                    MXUtils.showSafe(MXConversationActivity.this, R.string.mx_evaluate_failure);
                 }
             });
 
@@ -2134,11 +2134,12 @@ public class MXConversationActivity
             MXUtils.show(this, R.string.mx_data_is_loading);
             return false;
         }
-        if (!MXManager.getInstance(this).isSocketConnect() && mCurrentAgent != null) {
-            MXUtils.show(this, R.string.mx_net_status_not_available);
-            addNetStatusTopTip(MXMessageManager.ACTION_SOCKET_RECONNECT);
-            return false;
-        }
+        // 发送消息不提示网络状态
+//        if (!MXManager.getInstance(this).isSocketConnect() && mCurrentAgent != null) {
+//            MXUtils.show(this, R.string.mx_net_status_not_available);
+//            addNetStatusTopTip(MXMessageManager.ACTION_SOCKET_RECONNECT);
+//            return false;
+//        }
 
         // 如果当前客服是机器人，则限制发送频率为1秒
         if (mCurrentAgent != null && mCurrentAgent.isRobot()) {
@@ -2367,7 +2368,7 @@ public class MXConversationActivity
         mController.executeEvaluate(mConversationId, isSolved, level, tagIds, content, evaluateLevel, new SimpleCallback() {
             @Override
             public void onFailure(int code, String message) {
-                MXUtils.show(MXConversationActivity.this, R.string.mx_evaluate_failure);
+                MXUtils.showSafe(MXConversationActivity.this, R.string.mx_evaluate_failure);
             }
 
             @Override

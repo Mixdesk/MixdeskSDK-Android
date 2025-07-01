@@ -84,6 +84,7 @@ public final class MXConfig {
     @Deprecated
     public static boolean isEvaluateSwitchOpen = true; // 是否开启评价
     public static boolean isShowClientAvatar = false; // 是否显示客户头像
+    public static boolean isShowAgentAvatar = false; // 是否显示客服头像
     public static boolean isPhotoSendOpen = true; // 是否显示发送图片消息按钮
     public static boolean isCameraImageSendOpen = true; // 是否显示发送相机图片消息按钮
     public static boolean isEmojiSendOpen = true; // 是否显示发送 Emoji 表情消息按钮
