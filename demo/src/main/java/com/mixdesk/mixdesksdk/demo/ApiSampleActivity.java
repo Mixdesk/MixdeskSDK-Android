@@ -184,7 +184,13 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
                     MXManager.getInstance(ApiSampleActivity.this).getUnreadMessages(new OnGetMessageListCallback() {
                         @Override
                         public void onSuccess(List<MXMessage> messageList) {
-                            toast("unread message count = " + messageList.size());
+                            int i = 0;
+                            for (MXMessage message : messageList) {
+                             if (!message.getFrom_type().equals(MXMessage.TYPE_FROM_CLIENT)){
+                                 i++;
+                             }
+                            }
+                            toast("unread message count = " + i);
                         }
 
                         @Override

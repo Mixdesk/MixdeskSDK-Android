@@ -1,8 +1,11 @@
 package com.mixdesk.mixdesksdk.chatitem;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.mixdesk.mixdesksdk.R;
+import com.mixdesk.mixdesksdk.model.BaseMessage;
+import com.mixdesk.mixdesksdk.util.MXConfig;
 
 /**
  * 作者:王浩 邮件:bingoogolapple@gmail.com
@@ -25,6 +28,13 @@ public class MXAgentItem extends MXBaseBubbleItem {
         super.initView();
 
         unreadCircle = getViewById(R.id.unread_view);
+    }
+
+    public void setMessage(BaseMessage baseMessage, int position, Activity activity) {
+        super.setMessage(baseMessage, position, activity);
+        if (!MXConfig.isShowAgentAvatar) {
+            usAvatar.setVisibility(GONE);
+        }
     }
 
     @Override
