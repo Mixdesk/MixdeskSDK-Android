@@ -145,6 +145,8 @@
         android:hint="@string/mx_evaluate_hint"
         android:padding="@dimen/mx_size_level1"
         android:singleLine="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:textColor="@color/mx_chat_event_gray"
         android:textColorHint="@color/mx_evaluate_hint"
         android:textCursorDrawable="@drawable/mx_shape_cursor"
