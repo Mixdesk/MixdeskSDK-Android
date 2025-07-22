@@ -16,6 +16,12 @@
         app:mx_iv_cornerRadius="3dp"
         tools:src="@drawable/mx_shape_gray_dot" />
 
+    <com.mixdesk.mixdesksdk.widget.CircularProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true" />
+
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
