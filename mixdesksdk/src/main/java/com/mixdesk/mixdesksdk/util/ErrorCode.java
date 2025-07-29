@@ -12,4 +12,7 @@ public class ErrorCode {
     public static final int DOWNLOAD_IS_CANCEL = 20006;
     public static final int QUEUEING = 20008;
     public static final int CANCEL = 20010;
+
+    // 地域限制，不能发送消息
+    public static final int AREA_LIMIT = 20012;
 }

@@ -123,4 +123,5 @@
     <string name="mx_evaluate_require_tag">कृपया मूल्यांकन टैग चुनें</string>
     <string name="mx_evaluate_require_level">कृपया रेटिंग स्तर चुनें</string>
     <string name="mx_evaluate_already_evaluate">आपने पहले ही मूल्यांकन कर लिया है</string>
+    <string name="mx_ip_not_allowed">क्षमा करें, वर्तमान सिस्टम चीन मुख्य भूमि के नेटवर्क के माध्यम से संदेश भेजने का समर्थन नहीं करता है, आपकी समझ के लिए धन्यवाद।</string>
 </resources>

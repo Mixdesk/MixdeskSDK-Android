@@ -143,4 +143,5 @@
 
     <string name="mx_evaluate_require_tag">Please select an evaluation tag</string>
     <string name="mx_evaluate_require_level">Please select rating level</string>
+    <string name="mx_ip_not_allowed">Sorry, the current system does not support sending messages via networks from Mainland China. Thank you for your understanding.</string>
 </resources>

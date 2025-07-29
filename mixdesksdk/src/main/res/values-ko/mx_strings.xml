@@ -141,4 +141,5 @@
 
     <string name="mx_problem_solved">문제가 해결되었습니다</string>
     <string name="mx_problem_unsolved">문제가 해결되지 않았습니다</string>
+    <string name="mx_ip_not_allowed">죄송합니다. 현재 시스템은 중국 본토 네트워크를 통한 메시지 전송을 지원하지 않습니다. 양해해 주셔서 감사합니다.</string>
 </resources>

@@ -142,4 +142,5 @@
 
     <string name="mx_evaluate_require_tag">Sila pilih tag penilaian</string>
     <string name="mx_evaluate_require_level">Sila pilih tahap penilaian</string>
+    <string name="mx_ip_not_allowed">Maaf, sistem semasa tidak menyokong penghantaran mesej melalui rangkaian dari Tanah Besar China. Terima kasih atas pemahaman anda.</string>
 </resources>

@@ -138,4 +138,5 @@
     <string name="mx_content_request_storage_permission_below_10">เราจำเป็นต้องขออนุญาตจัดเก็บเพื่อ [ส่ง] และ [บันทึก] รูปภาพและวิดีโอ</string>
     <string name="mx_problem_solved">ปัญหาได้รับการแก้ไขแล้ว</string>
     <string name="mx_problem_unsolved">ปัญหายังไม่ได้รับการแก้ไข</string>
+    <string name="mx_ip_not_allowed">ขออภัย ระบบปัจจุบันไม่รองรับการส่งข้อความผ่านเครือข่ายจากจีนแผ่นดินใหญ่ ขอบคุณสำหรับความเข้าใจ</string>
 </resources>

@@ -142,4 +142,5 @@
 
     <string name="mx_evaluate_require_tag">Пожалуйста, выберите тег оценки</string>
     <string name="mx_evaluate_require_level">Пожалуйста, выберите уровень оценки</string>
+    <string name="mx_ip_not_allowed">Извините, текущая система не поддерживает отправку сообщений через сети материкового Китая. Спасибо за понимание.</string>
 </resources>

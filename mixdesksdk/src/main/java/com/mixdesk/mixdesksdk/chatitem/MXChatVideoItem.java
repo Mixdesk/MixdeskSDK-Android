@@ -4,19 +4,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import androidx.core.content.FileProvider;
 
 import com.mixdesk.mixdesksdk.R;
 import com.mixdesk.mixdesksdk.imageloader.MXImage;
 import com.mixdesk.mixdesksdk.model.VideoMessage;
 import com.mixdesk.mixdesksdk.util.MXUtils;
 import com.mixdesk.mixdesksdk.widget.MXBaseCustomCompositeView;
+
+import android.os.AsyncTask;
+
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileOutputStream;

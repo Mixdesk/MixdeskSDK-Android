@@ -127,152 +127,168 @@
         android:background="@drawable/mx_conversation_edit_bg"
         android:minHeight="92dp">
 
-        <EditText
-            android:id="@+id/input_et"
-            style="@style/MQMatchWrap"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/mx_size_level4"
-            android:layout_marginTop="@dimen/mx_size_level2"
-            android:layout_marginRight="@dimen/mx_size_level4"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="@string/mx_send_msg"
-            android:maxLines="5"
-            android:minHeight="40dp"
-            android:textColor="@color/mx_chat_et_textColor"
-            android:textCursorDrawable="@drawable/mx_shape_cursor"
-            android:textSize="@dimen/mx_textSize_level2"
-            tools:text="测试文本" />
+        <LinearLayout
+        android:id="@+id/chat_foot_content_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+            <EditText
+                android:id="@+id/input_et"
+                style="@style/MQMatchWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/mx_size_level4"
+                android:layout_marginTop="@dimen/mx_size_level2"
+                android:layout_marginRight="@dimen/mx_size_level4"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/mx_send_msg"
+                android:maxLines="5"
+                android:minHeight="40dp"
+                android:textColor="@color/mx_chat_et_textColor"
+                android:textCursorDrawable="@drawable/mx_shape_cursor"
+                android:textSize="@dimen/mx_textSize_level2"
+                tools:text="测试文本" />
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <ImageButton
-                android:id="@+id/send_text_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="22dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/mx_shape_send_back_normal"
-                android:src="@drawable/mx_ic_send_icon_grey" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@id/send_text_btn">
+                android:layout_height="50dp">
 
+                <ImageButton
+                    android:id="@+id/send_text_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/mx_shape_send_back_normal"
+                    android:src="@drawable/mx_ic_send_icon_grey" />
 
-                <RelativeLayout
-                    android:id="@+id/emoji_select_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/emoji_select_img"
-                        android:layout_width="@dimen/mx_size_level6"
-                        android:layout_height="@dimen/mx_size_level6"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/mx_ic_emoji_normal" />
-
-                    <View
-                        android:id="@+id/emoji_select_indicator"
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/mx_indicator_selected"
-                        android:visibility="gone" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:id="@+id/photo_select_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/photo_select_iv"
-                        android:layout_width="@dimen/mx_size_level6"
-                        android:layout_height="@dimen/mx_size_level6"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/mx_selector_ic_image" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/camera_select_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/camera_select_iv"
-                        android:layout_width="@dimen/mx_size_level6"
-                        android:layout_height="@dimen/mx_size_level6"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/mx_selector_ic_camera" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/video_select_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/video_select_iv"
-                        android:layout_width="@dimen/mx_size_level6"
-                        android:layout_height="@dimen/mx_size_level6"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/mx_selector_ic_video" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/mic_select_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/conversation_voice_img"
-                        android:layout_width="@dimen/mx_size_level6"
-                        android:layout_height="@dimen/mx_size_level6"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/mx_ic_mic_normal" />
-
-                    <View
-                        android:id="@+id/conversation_voice_indicator"
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/mx_indicator_selected"
-                        android:visibility="gone" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/evaluate_select_btn"
-                    android:layout_width="48dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
-                    tools:visibility="visible">
+                    android:layout_toLeftOf="@id/send_text_btn">
 
-                    <ImageView
-                        android:id="@+id/evaluate_select_iv"
-                        android:layout_width="@dimen/mx_size_level6"
-                        android:layout_height="@dimen/mx_size_level6"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/mx_selector_ic_evaluate" />
 
-                </RelativeLayout>
-            </LinearLayout>
-        </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/emoji_select_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent">
 
-        <com.mixdesk.mixdesksdk.widget.MXCustomKeyboardLayout
-            android:id="@+id/customKeyboardLayout"
-            style="@style/MQMatchWrap" />
+                        <ImageView
+                            android:id="@+id/emoji_select_img"
+                            android:layout_width="@dimen/mx_size_level6"
+                            android:layout_height="@dimen/mx_size_level6"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mx_ic_emoji_normal" />
+
+                        <View
+                            android:id="@+id/emoji_select_indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/mx_indicator_selected"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/photo_select_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/photo_select_iv"
+                            android:layout_width="@dimen/mx_size_level6"
+                            android:layout_height="@dimen/mx_size_level6"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mx_selector_ic_image" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/camera_select_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/camera_select_iv"
+                            android:layout_width="@dimen/mx_size_level6"
+                            android:layout_height="@dimen/mx_size_level6"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mx_selector_ic_camera" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/video_select_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/video_select_iv"
+                            android:layout_width="@dimen/mx_size_level6"
+                            android:layout_height="@dimen/mx_size_level6"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mx_selector_ic_video" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/mic_select_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/conversation_voice_img"
+                            android:layout_width="@dimen/mx_size_level6"
+                            android:layout_height="@dimen/mx_size_level6"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mx_ic_mic_normal" />
+
+                        <View
+                            android:id="@+id/conversation_voice_indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/mx_indicator_selected"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/evaluate_select_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/evaluate_select_iv"
+                            android:layout_width="@dimen/mx_size_level6"
+                            android:layout_height="@dimen/mx_size_level6"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mx_selector_ic_evaluate" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <com.mixdesk.mixdesksdk.widget.MXCustomKeyboardLayout
+                android:id="@+id/customKeyboardLayout"
+                style="@style/MQMatchWrap" />
+        </LinearLayout>
+         <TextView
+            android:id="@+id/chat_foot_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/mx_size_level2"
+            android:text="@string/mx_ip_not_allowed"
+            android:textColor="@color/mx_chat_et_textColor"
+            android:textSize="@dimen/mx_textSize_rich_text"
+            android:gravity="center"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <ProgressBar
