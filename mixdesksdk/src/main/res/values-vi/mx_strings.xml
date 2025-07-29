@@ -125,6 +125,7 @@
     <string name="mx_content_request_record_permission">Để gửi tin nhắn bằng giọng nói, cần quyền ghi âm</string>
     <string name="mx_title_send_photo">Gửi hình ảnh</string>
     <string name="mx_content_send_photo">Chúng tôi cần truy cập thư viện hình ảnh để gửi hình ảnh</string>
+    <string name="mx_content_request_storage_permission_below_10">Chúng tôi cần yêu cầu quyền lưu trữ để [gửi] và [lưu] hình ảnh và video.</string>
 
     <string name="mx_net_status_reconnect">Đang kết nối mạng, có thể có mất sót khi nhận tin nhắn</string>
     <string name="mx_net_status_not_available">Kết nối mạng của bạn đã ngắt kết nối, gửi tin nhắn thất bại</string>
@@ -141,4 +142,5 @@
 
     <string name="mx_evaluate_require_tag">Vui lòng chọn thẻ đánh giá</string>
     <string name="mx_evaluate_require_level">Vui lòng chọn mức đánh giá</string>
+    <string name="mx_ip_not_allowed">Xin lỗi, hệ thống hiện tại không hỗ trợ gửi tin nhắn qua mạng từ Trung Quốc đại lục. Cảm ơn bạn đã thông cảm.</string>
 </resources>

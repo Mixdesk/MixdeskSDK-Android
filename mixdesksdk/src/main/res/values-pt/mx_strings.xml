@@ -143,4 +143,5 @@
     <string name="mx_evaluate_require_level">Por favor, selecione o nível de avaliação</string>
 
     <string name="mx_evaluate_already_evaluate">Você já avaliou</string>
+    <string name="mx_ip_not_allowed">Desculpe, o sistema atual não suporta o envio de mensagens através de redes da China continental. Obrigado pela sua compreensão.</string>
 </resources>

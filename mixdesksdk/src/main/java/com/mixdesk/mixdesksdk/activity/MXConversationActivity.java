@@ -156,6 +156,8 @@ public class MXConversationActivity
     private TextView mTitleTv;
     private TextView mRedirectHumanTv; // 转人工按钮
     private RelativeLayout mChatBodyRl;
+    private LinearLayout mChatFootContentLL;
+    private TextView mChatFootText;
     private ListView mConversationListView;
     private EditText mInputEt;
     private ImageButton mSendTextBtn;
@@ -256,10 +258,10 @@ public class MXConversationActivity
 
     private void refreshConfig(boolean isConvActive) {
         // 已经分配了对话的情况下，不再刷新配置
-        if (isConvActive) {
-            applyAfterRefreshConfig();
-            return;
-        }
+//        if (isConvActive) {
+//            applyAfterRefreshConfig();
+//            return;
+//        }
         // 刷新配置
         mController.refreshEnterpriseConfig(new SimpleCallback() {
             @Override
@@ -298,6 +300,15 @@ public class MXConversationActivity
         mPhotoSelectBtn.setVisibility(isPhotoMsgOpen ? View.VISIBLE : View.GONE);
         mCameraSelectBtn.setVisibility(isCameraMsgOpen ? View.VISIBLE : View.GONE);
         mVideoSelectBtn.setVisibility(mController.getEnterpriseConfig().isVideoMsgOpen ? View.VISIBLE : View.GONE);
+
+        boolean ipAllowed = mController.getEnterpriseConfig().ip_allowed;
+        if (!ipAllowed) {
+            mChatFootContentLL.setVisibility(View.GONE);
+            mChatFootText.setVisibility(View.VISIBLE);
+        }else {
+            mChatFootContentLL.setVisibility(View.VISIBLE);
+            mChatFootText.setVisibility(View.GONE);
+        }
 
         // 设置顾客上线，请求分配客服
         setClientOnline();
@@ -537,6 +548,10 @@ public class MXConversationActivity
         mBackIv = findViewById(R.id.back_iv);
         mRedirectHumanTv = findViewById(R.id.redirect_human_tv);
         mChatBodyRl = findViewById(R.id.chat_body_rl);
+
+        mChatFootContentLL = findViewById(R.id.chat_foot_content_ll);
+        mChatFootText = findViewById(R.id.chat_foot_text);
+
         mConversationListView = findViewById(R.id.messages_lv);
         mInputEt = findViewById(R.id.input_et);
         mEmojiSelectBtn = findViewById(R.id.emoji_select_btn);
@@ -2177,7 +2192,6 @@ public class MXConversationActivity
 
                 // 客服不在线的时候，会自动发送留言消息，这个时候要添加一个 tip 到列表
                 if (ErrorCode.NO_AGENT_ONLINE == state) {
-//                    addLeaveMessageTip();
                 }
                 // 发送成功播放声音
                 if (MXConfig.isSoundSwitchOpen) {
@@ -2193,17 +2207,9 @@ public class MXConversationActivity
                 if (code == ErrorCode.BLACKLIST) {
                     addBlacklistTip(R.string.mx_blacklist_tips);
                 } else if (code == ErrorCode.QUEUEING) {
-//                    changeToQueueingState();
                 } else if (code == ErrorCode.NO_AGENT_ONLINE) {
-                    // 关闭留言功能的情况下，直接跳转到留言界面：如果当前客服是机器人就例外
-//                    if (isEnableGoToMessageFormActivity()) {
-//                        Intent intent = new Intent(MQConversationActivity.this, MQMessageFormActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                        return;
-//                    } else {
-////                        addLeaveMessageTip();
-//                    }
+                } else if (code == ErrorCode.AREA_LIMIT) {
+                    Toast.makeText(MXConversationActivity.this,  failureInfo, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(MXConversationActivity.this, "code = " + code + "\n" + "message = " + message, Toast.LENGTH_SHORT).show();
                 }
@@ -2212,20 +2218,6 @@ public class MXConversationActivity
         });
         MXUtils.scrollListViewToBottom(mConversationListView);
     }
-
-//    private boolean isEnableGoToMessageFormActivity() {
-//        return !mController.getEnterpriseConfig().ticketConfig.isSdkEnabled() && (mCurrentAgent != null && !mCurrentAgent.isRobot());
-//    }
-
-//    private void changeToQueueingState() {
-//        if (mCurrentAgent != null && !mCurrentAgent.isRobot()) {
-//            mCurrentAgent = null;
-//        }
-//        popTopTip(R.string.mx_allocate_queue_tip);
-//        getClientPositionInQueue();
-//        removeNoAgentLeaveMsg();
-//        changeTitleToQueue();
-//    }
 
     /**
      * 重发消息

@@ -142,4 +142,5 @@
     <string name="mx_problem_unsolved">Masalah belum diselesaikan</string>
 
     <string name="mx_evaluate_require_tag">Silakan pilih tag evaluasi</string>
+    <string name="mx_ip_not_allowed">Maaf, sistem saat ini tidak mendukung pengiriman pesan melalui jaringan dari Tiongkok Daratan. Terima kasih atas pengertiannya.</string>
 </resources>

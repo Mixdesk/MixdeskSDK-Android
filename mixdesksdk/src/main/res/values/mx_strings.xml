@@ -141,5 +141,7 @@
 
     <string name="mx_problem_solved">问题已经解决</string>
     <string name="mx_problem_unsolved">问题未解决</string>
+    <string name="mx_ip_not_allowed">抱歉,当前系统暂不支持通过中国大陆地区的网络发送消息,感谢您的理解</string>
+
 
 </resources>

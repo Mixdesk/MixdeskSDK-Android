@@ -142,4 +142,5 @@
 
     <string name="mx_evaluate_require_tag">請勾選評價標籤</string>
     <string name="mx_evaluate_require_level">請選擇評價等級</string>
+    <string name="mx_ip_not_allowed">抱歉，當前系統暫不支援通過中國大陸地區的網路發送訊息，感謝您的理解</string>
 </resources>

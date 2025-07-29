@@ -143,4 +143,6 @@
     <string name="mx_evaluate_require_tag">評価タグを選択してください</string>
     <string name="mx_evaluate_require_level">評価レベルを選択してください</string>
 
+    <string name="mx_ip_not_allowed">申し訳ありませんが、現在のシステムは中国本土のネットワーク経由でのメッセージ送信をサポートしていません。ご理解いただきありがとうございます。</string>
+
 </resources>

@@ -146,11 +146,15 @@ public class ControllerImpl implements MXController {
         // scheduler
         com.mixdesk.core.callback.OnClientOnlineCallback onlineCallback = new com.mixdesk.core.callback.OnClientOnlineCallback() {
             @Override
-            public void onSuccess(MXAgent mqAgent, String conversationId, List<MXMessage> conversationMessageList, boolean isShowTransferHumanBtn) {
+            public void onSuccess(MXAgent mqAgent, String conversationId, List<MXMessage> conversationMessageList,
+                                  boolean isShowTransferHumanBtn,boolean hasOpenedChat) {
                 Agent agent = MXUtils.parseMQAgentToAgent(mqAgent);
                 List<BaseMessage> messageList = MXUtils.parseMQMessageToChatBaseList(conversationMessageList);
                 if (onClientOnlineCallback != null) {
                     onClientOnlineCallback.onSuccess(agent, conversationId, messageList, isShowTransferHumanBtn);
+                }
+                if (!hasOpenedChat) {
+                    MXManager.getInstance(context).clientOpenChat(Integer.valueOf(conversationId));
                 }
             }
 
