@@ -1177,7 +1177,11 @@ public class MXUtils {
                 new String[]{filePath}, null);
         try {
             if (cursor != null && cursor.moveToFirst()) {
-                int id = cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
+                int idIndex = cursor.getColumnIndex(MediaStore.MediaColumns._ID);
+                if (idIndex == -1) {
+                    return null;
+                }
+                int id = cursor.getInt(idIndex);
                 Uri baseUri = Uri.parse("content://media/external/images/media");
                 return Uri.withAppendedPath(baseUri, "" + id);
             } else {
@@ -1361,7 +1365,7 @@ public class MXUtils {
             return type;
         }
         /* 获取文件的后缀名*/
-        String end = fName.substring(dotIndex).toLowerCase();
+        String end = fName.substring(dotIndex).toLowerCase(Locale.US);
         if (end.equals("")) return type;
         for (String[] strings : MIME_MapTable) {
             if (end.equals(strings[0]))

@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * 作者:王浩 邮件:bingoogolapple@gmail.com
@@ -33,7 +34,7 @@ public class MXImageCaptureManager {
     }
 
     private File createImageFile() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File image = File.createTempFile(imageFileName, ".jpg", mImageDir);
         mCurrentPhotoPath = image.getAbsolutePath();

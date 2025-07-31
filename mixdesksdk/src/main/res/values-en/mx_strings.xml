@@ -61,7 +61,7 @@
 
     <string name="mx_download_audio_failure">Download of recording has failed</string>
     <string name="mx_recorder_no_permission">Failed to record voice, Please make sure you have voice permission.</string>
-    <string name="mx_recorder_remaining_time">End in %1$d seconds</string>
+    <string name="mx_recorder_remaining_time">End in %1$s seconds</string>
 
     <string name="mx_view_photo">View Image</string>
     <string name="mx_save_img_failure">Failed to save a photo.</string>
@@ -75,7 +75,7 @@
     <string name="mx_param_not_allow_empty">%1$s cannot be empty</string>
     <string name="mx_take_picture">Take photo</string>
     <string name="mx_submit">Submit</string>
-    <string name="mx_toast_photo_picker_max">Up to %1$s photo(s)</string>
+    <string name="mx_toast_photo_picker_max">Up to %1$d photo(s)</string>
     <string name="mx_choose">Choose</string>
     <string name="mx_hint_input">Input</string>
     <string name="mx_auth_code">CAPTCHA</string>

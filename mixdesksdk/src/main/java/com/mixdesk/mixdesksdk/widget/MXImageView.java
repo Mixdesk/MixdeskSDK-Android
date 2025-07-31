@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.mixdesk.mixdesksdk.R;
 
@@ -24,7 +24,7 @@ import com.mixdesk.mixdesksdk.R;
  * 创建时间:16/3/29 上午11:32
  * 描述:
  */
-public class MXImageView extends ImageView {
+public class MXImageView extends AppCompatImageView {
     private int mDefaultImageId;
     private int mCornerRadius = 0;
     private boolean mIsCircle = false;

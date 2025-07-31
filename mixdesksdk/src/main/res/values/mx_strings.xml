@@ -77,7 +77,7 @@
     <string name="mx_param_not_allow_empty">%1$s 不能为空</string>
     <string name="mx_take_picture">拍摄照片</string>
     <string name="mx_submit">提交</string>
-    <string name="mx_toast_photo_picker_max">最多只能选择 %1$s 张图片</string>
+    <string name="mx_toast_photo_picker_max">最多只能选择 %1$d 张图片</string>
     <string name="mx_choose">选择</string>
     <string name="mx_hint_input">输入</string>
     <string name="mx_auth_code">验证码</string>
