@@ -48,9 +48,17 @@ public class MXLoadPhotoTask extends MXAsyncTask<Void, ArrayList<ImageFolderMode
             if (cursor != null && cursor.getCount() > 0) {
                 boolean firstInto = true;
                 while (cursor.moveToNext()) {
-                    String imagePath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-                    String mimeType = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.MIME_TYPE));
-                    int id = cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
+                    int dataIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
+                    int mimeTypeIndex = cursor.getColumnIndex(MediaStore.Images.Media.MIME_TYPE);
+                    int idIndex = cursor.getColumnIndex(MediaStore.MediaColumns._ID);
+                    
+                    if (dataIndex == -1 || mimeTypeIndex == -1 || idIndex == -1) {
+                        continue; // 跳过无效的列索引
+                    }
+                    
+                    String imagePath = cursor.getString(dataIndex);
+                    String mimeType = cursor.getString(mimeTypeIndex);
+                    int id = cursor.getInt(idIndex);
                     if (!TextUtils.isEmpty(imagePath) && !TextUtils.isEmpty(mimeType)) {
                         if (firstInto) {
                             allImageFolderModel.name = mContext.getString(R.string.mx_all_image);
