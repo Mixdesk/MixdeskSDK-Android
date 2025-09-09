@@ -102,6 +102,17 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/chat_box"
             android:visibility="visible" />
+            
+        <ImageView
+            android:id="@+id/message_status_icon"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_toLeftOf="@id/chat_box"
+            android:layout_alignBottom="@id/chat_box"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:background="#0088ff" />
     </RelativeLayout>
 
     <TextView

@@ -54,6 +54,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    implementation 'com.mixdesk:androidx:1.0.8'
+    implementation 'com.mixdesk:androidx:1.0.9'
 //    implementation project(path: ':mixdesksdk')
 }

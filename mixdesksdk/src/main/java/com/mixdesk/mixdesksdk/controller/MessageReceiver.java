@@ -62,6 +62,30 @@ public abstract class MessageReceiver extends BroadcastReceiver {
                 }
             }
         }
+        // 客服消息已送达
+        else if(MXMessageManager.ACTION_MSG_DELIVERED.equals(action)){
+            String msgId = intent.getStringExtra("msgId");
+            MXMessage message = messageManager.getMQMessage(msgId);
+            if (message == null) {
+                return;
+            }
+            baseMessage = MXUtils.parseMQMessageToBaseMessage(message);
+            if (baseMessage != null) {
+                msgDelivered(baseMessage);
+            }
+        }
+        // 客服消息已读
+        else if(MXMessageManager.ACTION_MSG_READ.equals(action)){
+            String msgId = intent.getStringExtra("msgId");
+            MXMessage message = messageManager.getMQMessage(msgId);
+            if (message == null) {
+                return;
+            }
+            baseMessage = MXUtils.parseMQMessageToBaseMessage(message);
+            if (baseMessage != null) {
+                msgRead(baseMessage);
+            }
+        }
         // 撤回消息
         else if (MXMessageManager.ACTION_RECALL_MESSAGE.equals(action)) {
             String nickname = intent.getStringExtra("nickname");
@@ -160,4 +184,8 @@ public abstract class MessageReceiver extends BroadcastReceiver {
     public abstract void socketOpen();
 
     public abstract void socketReconnect();
+
+    public abstract void msgDelivered(BaseMessage message);
+
+    public abstract void msgRead(BaseMessage message);
 }

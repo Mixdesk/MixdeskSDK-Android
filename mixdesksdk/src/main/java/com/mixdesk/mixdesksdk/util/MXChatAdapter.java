@@ -1,5 +1,7 @@
 package com.mixdesk.mixdesksdk.util;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +51,54 @@ public class MXChatAdapter extends BaseAdapter implements MXBaseBubbleItem.Callb
             notifyDataSetChanged();
         }
     };
+
+    /**
+     * 根据消息ID局部更新特定的View
+     * @param messageId 要更新的消息ID
+     */
+    public void updateMessageByIdOptimized(long messageId) {
+        boolean foundInVisibleArea = false;
+
+        // 找到可见的View范围
+        int firstVisiblePosition = mListView.getFirstVisiblePosition();
+        int lastVisiblePosition = mListView.getLastVisiblePosition();
+        
+        // 在可见范围内查找目标消息
+        for (int i = firstVisiblePosition; i <= lastVisiblePosition; i++) {
+            if (i >= 0 && i < mMessageList.size()) {
+                BaseMessage message = mMessageList.get(i);
+                if (message.getId() == messageId) {
+                    // 获取可见的View
+                    View view = mListView.getChildAt(i - firstVisiblePosition);
+                    if (view != null) {
+                        // 只更新这个特定的View
+                        updateSingleView(view, message, i);
+                        foundInVisibleArea = true;
+                        break;
+                    }
+                }
+            }
+        }
+        // 不在可视区域里面就全局更新下
+        if(!foundInVisibleArea){
+            notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * 更新单个View的状态
+     * @param view 要更新的View
+     * @param message 消息对象
+     * @param position 位置
+     */
+    private void updateSingleView(View view, BaseMessage message, int position) {
+        if (view instanceof MXClientItem) {
+            ((MXClientItem) view).setMessage(message, position, mConversationActivity);
+        } else if (view instanceof MXAgentItem) {
+            ((MXAgentItem) view).setMessage(message, position, mConversationActivity);
+        }
+        // 可以根据需要添加其他类型的View更新
+    }
 
     public MXChatAdapter(MXConversationActivity conversationActivity, List<BaseMessage> messageList, ListView listView) {
         mConversationActivity = conversationActivity;

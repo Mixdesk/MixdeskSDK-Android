@@ -40,6 +40,11 @@ public class BaseMessage {
     public static final int TYPE_CONV_DIVIDER = 12;
 
     public static final int MAX_TYPE = 13; // 增加了类型，要同步改 MAX
+
+    public static final int UN_DELIVERED = 1; // 未送达
+    public static final int DELIVERED = 2; // 已送达
+    public static final int READ = 3; // 已读
+
     private long createdOn;
     private String agentNickname;
     private String status;
@@ -53,6 +58,8 @@ public class BaseMessage {
     private long conversationId;
     private String fromType = TYPE_FROM_AGENT;
     private boolean isWithdraw;
+    private int readStatus;
+
 
     public BaseMessage() {
         this.createdOn = System.currentTimeMillis();
@@ -184,5 +191,13 @@ public class BaseMessage {
             BaseMessage baseMessage = (BaseMessage) o;
             return id == baseMessage.getId();
         }
+    }
+
+    public int getReadStatus() {
+        return readStatus;
+    }
+
+    public void setReadStatus(int readStatus) {
+        this.readStatus = readStatus;
     }
 }

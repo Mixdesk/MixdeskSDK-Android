@@ -328,6 +328,7 @@ public class MXConversationActivity
             mChatFootContentLL.setVisibility(View.VISIBLE);
             mChatFootText.setVisibility(View.GONE);
         }
+        MXConfig.isShowAgentReadMsg = mController.getEnterpriseConfig().isShowAgentReadMsg;
 
         // 设置顾客上线，请求分配客服
         setClientOnline();
@@ -689,6 +690,8 @@ public class MXConversationActivity
         intentFilter.addAction(MXMessageManager.ACTION_SOCKET_OPEN);
         intentFilter.addAction(MXMessageManager.ACTION_SOCKET_RECONNECT);
         intentFilter.addAction(MXMessageManager.ACTION_RECALL_MESSAGE);
+        intentFilter.addAction(MXMessageManager.ACTION_MSG_DELIVERED);
+        intentFilter.addAction(MXMessageManager.ACTION_MSG_READ);
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, intentFilter);
 
         // 网络监听
@@ -2584,7 +2587,6 @@ public class MXConversationActivity
             mConversationId = String.valueOf(convId);
             mMessageReceiver.setConversationId(mConversationId);
             setCurrentAgent(mController.getCurrentAgent());
-//            sendDelayMessages();
         }
 
         @Override
@@ -2595,6 +2597,28 @@ public class MXConversationActivity
         @Override
         public void socketReconnect() {
             addNetStatusTopTip(MXMessageManager.ACTION_SOCKET_RECONNECT);
+        }
+
+        @Override
+        public void msgDelivered(BaseMessage message) {
+            int index = mChatMessageList.indexOf(message);
+            if (index >= 0) {
+                BaseMessage existingMessage = mChatMessageList.get(index);
+                existingMessage.setReadStatus(message.getReadStatus());
+                // 优化：使用局部更新而非全局刷新
+                mChatMsgAdapter.updateMessageByIdOptimized(message.getId());
+            }
+        }
+
+        @Override
+        public void msgRead(BaseMessage message) {
+            int index = mChatMessageList.indexOf(message);
+            if (index >= 0) {
+                BaseMessage existingMessage = mChatMessageList.get(index);
+                existingMessage.setReadStatus(message.getReadStatus());
+                // 优化：使用局部更新而非全局刷新
+                mChatMsgAdapter.updateMessageByIdOptimized(message.getId());
+            }
         }
     }
 

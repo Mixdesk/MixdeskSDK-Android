@@ -169,11 +169,6 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
                 tagParams.setMargins(MXUtils.dip2px(activity, 5), MXUtils.dip2px(activity, 2),
                          0, MXUtils.dip2px(activity, 2));
 
-                // 创建圆角背景
-                GradientDrawable normalDrawable = new GradientDrawable();
-                normalDrawable.setColor(activity.getResources().getColor(R.color.mx_item_pressed));
-                normalDrawable.setCornerRadius(MXUtils.dip2px(activity, 5));
-
                 // 先测量父容器最大宽度
                 int maxWidth = tagsContainer.getWidth()
                         - tagsContainer.getPaddingLeft() - tagsContainer.getPaddingRight();
@@ -194,12 +189,20 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
                             MXUtils.dip2px(activity, 10),
                             MXUtils.dip2px(activity, 0));
                     tagTv.setTextColor(activity.getResources().getColor(R.color.mx_activity_title_textColor));
-                    tagTv.setBackground(normalDrawable);
+                    
+                    // 为每个CheckBox创建独立的背景drawable
+                    GradientDrawable initialDrawable = new GradientDrawable();
+                    initialDrawable.setColor(activity.getResources().getColor(R.color.mx_item_pressed));
+                    initialDrawable.setCornerRadius(MXUtils.dip2px(activity, 5));
+                    tagTv.setBackground(initialDrawable);
                     tagTv.setLayoutParams(tagParams);
 
                     // 设置选中状态的背景颜色
                     tagTv.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                        // 为每次状态变化创建新的drawable实例，避免共享引用问题
                         GradientDrawable drawable = new GradientDrawable();
+                        drawable.setCornerRadius(MXUtils.dip2px(activity, 5));
+                        
                         if (isChecked) {
                             drawable.setColor(activity.getResources().getColor(R.color.mx_colorPrimary));
                             buttonView.setTextColor(activity.getResources().getColor(R.color.mx_white));
@@ -209,7 +212,6 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
                             buttonView.setTextColor(activity.getResources().getColor(R.color.mx_activity_title_textColor));
                             selectedTagIds.remove((MXEvaluateConfig.Tag) buttonView.getTag()); // 移除取消选中的tag id
                         }
-                        drawable.setCornerRadius(MXUtils.dip2px(activity, 5));
                         buttonView.setBackground(drawable);
                     });
 
