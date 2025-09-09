@@ -24,6 +24,7 @@ public class MXClientItem extends MXBaseBubbleItem {
     private ProgressBar sendingProgressBar;
     private ImageView sendState;
     private TextView sensitiveWordTipTv;
+    private ImageView messageStatusIcon;
 
     public MXClientItem(Context context, Callback callback) {
         super(context, callback);
@@ -41,6 +42,7 @@ public class MXClientItem extends MXBaseBubbleItem {
         sendingProgressBar = getViewById(R.id.progress_bar);
         sendState = getViewById(R.id.send_state);
         sensitiveWordTipTv = getViewById(R.id.sensitive_words_tip_tv);
+        messageStatusIcon = getViewById(R.id.message_status_icon);
     }
 
     @Override
@@ -93,6 +95,20 @@ public class MXClientItem extends MXBaseBubbleItem {
                     sendState.setTag(baseMessage.getId());
                     break;
             }
+        }
+
+        if (MXConfig.isShowAgentReadMsg) {
+            if (baseMessage.getReadStatus() == BaseMessage.DELIVERED) {
+                messageStatusIcon.setVisibility(View.VISIBLE);
+                messageStatusIcon.setImageResource(R.drawable.mx_icon_delivered);
+            } else if (baseMessage.getReadStatus() == BaseMessage.READ) {
+                messageStatusIcon.setVisibility(View.VISIBLE);
+                messageStatusIcon.setImageResource(R.drawable.mx_icon_read);
+            } else {
+                messageStatusIcon.setVisibility(View.GONE);
+            }
+        } else {
+            messageStatusIcon.setVisibility(View.GONE);
         }
     }
 

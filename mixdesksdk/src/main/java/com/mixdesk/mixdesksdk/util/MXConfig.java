@@ -88,6 +88,7 @@ public final class MXConfig {
     public static boolean isPhotoSendOpen = true; // 是否显示发送图片消息按钮
     public static boolean isCameraImageSendOpen = true; // 是否显示发送相机图片消息按钮
     public static boolean isEmojiSendOpen = true; // 是否显示发送 Emoji 表情消息按钮
+    public static boolean isShowAgentReadMsg = true; // 是否显示客服已读消息
 
     public static boolean isCloseSocketAfterDestroy = false; // 是否在退出客服界面时关闭 socket 长连接
     public static String language;

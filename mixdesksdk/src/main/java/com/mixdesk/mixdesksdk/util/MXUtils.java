@@ -209,23 +209,6 @@ public class MXUtils {
      */
     public static BaseMessage parseMQMessageToBaseMessage(MXMessage message) {
         BaseMessage baseMessage;
-
-//        if (TextUtils.equals(MQMessage.TYPE_FROM_ROBOT, message.getFrom_type())) {
-//            if (TextUtils.equals(message.getContent_type(), BaseMessage.TYPE_CONTENT_HYBRID)) {
-//                baseMessage = new HybridMessage();
-//                baseMessage.setContent(message.getContent());
-//                ((HybridMessage) baseMessage).setExtra(message.getExtra());
-//            } else {
-//                RobotMessage robotMessage = new RobotMessage();
-//                robotMessage.setContentRobot(message.getContent_robot());
-//                robotMessage.setContent(message.getContent());
-//                robotMessage.setSubType(message.getSub_type());
-//                robotMessage.setQuestionId(message.getQuestion_id());
-//                robotMessage.setFeedbackUseful(message.getFeedbackUseful());
-//                robotMessage.setExtra(message.getExtra());
-//                baseMessage = robotMessage;
-//            }
-//        } else
         if (TextUtils.equals(message.getContent_type(), BaseMessage.TYPE_CONTENT_HYBRID)) {
             baseMessage = new HybridMessage();
             baseMessage.setContent(message.getContent());
@@ -388,6 +371,7 @@ public class MXUtils {
         baseMessage.setFromType(message.getFrom_type());
         baseMessage.setConvId(message.getConversation_id());
         baseMessage.setWithdraw(message.isWithdraw());
+        baseMessage.setReadStatus(message.getRead_status());
         return baseMessage;
     }
 
