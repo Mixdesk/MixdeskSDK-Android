@@ -92,7 +92,7 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
                 return bitmaps[0];
             } else if (level == 1) {
                 return bitmaps[2];
-            } else if (level == 3) {
+            } else if (level == 2) {
                 return bitmaps[4];
             }
         }
@@ -143,7 +143,7 @@ public class MXEvaluateLevelDialog extends Dialog implements View.OnClickListene
             // 添加点击事件
             levelImage.setOnClickListener(v -> {
                 ImageView clickedImage = (ImageView) v;
-                clickedImage.setImageBitmap(bitmapResolves[evaluateConfig.getLevel()]);
+                clickedImage.setImageBitmap(getBitmap(bitmapResolves, evaluateConfig.getLevel()));
                 // clear
                 if (prevSelectLevel >= 0 && prevSelectLevel != evaluateConfig.getLevel()) {
                     imageViews[prevSelectLevel].setImageBitmap(getBitmap(bitmapUnResolves, prevSelectLevel));
