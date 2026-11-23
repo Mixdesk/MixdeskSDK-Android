@@ -143,4 +143,5 @@
     <string name="mx_evaluate_require_tag">Vui lòng chọn thẻ đánh giá</string>
     <string name="mx_evaluate_require_level">Vui lòng chọn mức đánh giá</string>
     <string name="mx_ip_not_allowed">Xin lỗi, hệ thống hiện tại không hỗ trợ gửi tin nhắn qua mạng từ Trung Quốc đại lục. Cảm ơn bạn đã thông cảm.</string>
+    <string name="mx_product_card_link_unsupported">Không thể mở liên kết này</string>
 </resources>

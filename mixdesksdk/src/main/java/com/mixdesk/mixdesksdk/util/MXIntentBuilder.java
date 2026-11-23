@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 
 import com.mixdesk.core.MXManager;
+import com.mixdesk.core.bean.MXProductCard;
 import com.mixdesk.mixdesksdk.activity.MXConversationActivity;
 
 import java.util.HashMap;
@@ -58,6 +59,20 @@ public class MXIntentBuilder {
 
     public MXIntentBuilder updateClientInfo(HashMap<String, String> clientInfo) {
         mIntent.putExtra(MXConversationActivity.UPDATE_CLIENT_INFO, clientInfo);
+        return this;
+    }
+
+    /**
+     * 打开聊天页后自动发送一张商品卡片（分配成功、socket 连上后发送）
+     *
+     * @param productCard 用 {@link MXProductCard.Builder} 创建，为 null 时不发送
+     */
+    public MXIntentBuilder setPreSendProductCard(MXProductCard productCard) {
+        if (productCard == null) {
+            mIntent.removeExtra(MXConversationActivity.PRE_SEND_PRODUCT_CARD);
+        } else {
+            mIntent.putExtra(MXConversationActivity.PRE_SEND_PRODUCT_CARD, productCard);
+        }
         return this;
     }
 

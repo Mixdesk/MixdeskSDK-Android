@@ -11,7 +11,7 @@
 ### AndroidStudio
 
 ```
-implementation 'com.mixdesk:androidx:0.0.1'
+implementation 'com.mixdesk:androidx:1.0.11'
 implementation 'com.github.bumptech.glide:glide:4.9.0'
 annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 ```
@@ -82,6 +82,37 @@ MXConfig.setActivityLifecycleCallback(new MXSimpleActivityLifecycleCallback() {
 });
 ```
 
+
+### 发送商品卡片（1.0.11 起）
+
+访客可以向客服发送商品卡片，卡片显示图片、名称、价格和描述，客服在工作台点击即可打开商品页面。
+
+```java
+MXProductCard card = new MXProductCard.Builder()
+        .setTitle("真皮通勤托特包 大容量")                 // 必填，最多 128 字符
+        .setProductUrl("https://shop.example.com/p/1024") // 必填，仅支持 http/https
+        .setPicUrl("https://cdn.example.com/1024.jpg")    // 选填，仅支持 http/https
+        .setPrice("¥599.00")                             // 选填，原样展示，最多 32 字符
+        .setDescription("头层牛皮，可放 14 寸笔记本")     // 选填，最多 512 字符
+        .build();                                         // 参数不合法时抛 IllegalArgumentException
+
+// 方式一：打开聊天页时带上卡片，连接成功后自动发送
+startActivity(new MXIntentBuilder(context)
+        .setCustomizedId("user_10086")
+        .setPreSendProductCard(card)
+        .build());
+
+// 方式二：直接发送（自定义界面或已在聊天页时）
+MXManager.getInstance(context).sendProductCardMessage(card, new OnMessageSendCallback() {
+    @Override
+    public void onSuccess(MXMessage message, int state) { }
+
+    @Override
+    public void onFailure(MXMessage message, int code, String response) {
+        // code 为 20001 表示参数不合法
+    }
+});
+```
 
 ## 常见问题列表
 

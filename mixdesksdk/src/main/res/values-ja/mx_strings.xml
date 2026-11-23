@@ -145,4 +145,5 @@
 
     <string name="mx_ip_not_allowed">申し訳ありませんが、現在のシステムは中国本土のネットワーク経由でのメッセージ送信をサポートしていません。ご理解いただきありがとうございます。</string>
 
+    <string name="mx_product_card_link_unsupported">このリンクは開けません</string>
 </resources>

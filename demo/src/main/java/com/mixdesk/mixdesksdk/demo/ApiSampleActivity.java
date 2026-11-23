@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.mixdesk.core.MXManager;
 import com.mixdesk.core.bean.MXAgent;
 import com.mixdesk.core.bean.MXMessage;
+import com.mixdesk.core.bean.MXProductCard;
+import com.mixdesk.core.callback.OnMessageSendCallback;
 import com.mixdesk.core.callback.OnEndConversationCallback;
 import com.mixdesk.core.callback.OnGetMQClientIdCallBackOn;
 import com.mixdesk.core.callback.OnGetMessageListCallback;
@@ -42,6 +44,8 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
     private View offlineClientBtn;
     private View endConversationBtn;
     private View getCurrentAgentInfoBtn;
+    private View openChatWithProductCardBtn;
+    private View sendProductCardBtn;
 
     private MXManager MXManager;
 
@@ -68,6 +72,8 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
         offlineClientBtn = findViewById(R.id.set_client_offline_btn);
         endConversationBtn = findViewById(R.id.end_conversation_btn);
         getCurrentAgentInfoBtn = findViewById(R.id.get_current_agent_info_btn);
+        openChatWithProductCardBtn = findViewById(R.id.open_chat_with_product_card_btn);
+        sendProductCardBtn = findViewById(R.id.send_product_card_btn);
     }
 
     private void setListeners() {
@@ -75,6 +81,8 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
         setInputIdOnlineBtn.setOnClickListener(this);
         setCustomizedIdOnlineBtn.setOnClickListener(this);
         getNewIdBtn.setOnClickListener(this);
+        openChatWithProductCardBtn.setOnClickListener(this);
+        sendProductCardBtn.setOnClickListener(this);
         setClientInfoBtn.setOnClickListener(this);
         getUnreadMessageBtn.setOnClickListener(this);
         offlineClientBtn.setOnClickListener(this);
@@ -231,7 +239,39 @@ public class ApiSampleActivity extends Activity implements View.OnClickListener 
             } else {
                 toast("没有当前客服");
             }
+        } else if (id == R.id.open_chat_with_product_card_btn) {
+            // 方式一：打开聊天页时带上商品卡片，分配成功、socket 连上后自动发送
+            Intent intent = new MXIntentBuilder(this)
+                    .setPreSendProductCard(buildSampleProductCard())
+                    .build();
+            startActivity(intent);
+        } else if (id == R.id.send_product_card_btn) {
+            // 方式二：核心层直接发送（自定义界面 / 已在聊天页时）
+            MXManager.getInstance(this).sendProductCardMessage(buildSampleProductCard(), new OnMessageSendCallback() {
+                @Override
+                public void onSuccess(MXMessage message, int state) {
+                    toast("sendProductCardMessage success");
+                }
+
+                @Override
+                public void onFailure(MXMessage failureMessage, int code, String response) {
+                    toast("sendProductCardMessage failed: code = " + code + "\n" + response);
+                }
+            });
         }
+    }
+
+    /**
+     * 名称、链接必填；图片、价格、描述选填；链接和图片只允许 http/https，不合法时 build() 抛 IllegalArgumentException
+     */
+    private MXProductCard buildSampleProductCard() {
+        return new MXProductCard.Builder()
+                .setTitle("真皮通勤托特包 大容量")
+                .setProductUrl("https://shop.example.com/p/1024")
+                .setPicUrl("https://cdn.example.com/1024.jpg")
+                .setPrice("¥599.00")
+                .setDescription("头层牛皮，可放 14 寸笔记本")
+                .build();
     }
 
     private void updateId() {

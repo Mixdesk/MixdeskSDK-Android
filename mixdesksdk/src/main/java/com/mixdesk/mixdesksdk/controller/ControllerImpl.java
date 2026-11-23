@@ -7,6 +7,7 @@ import com.mixdesk.core.MXManager;
 import com.mixdesk.core.bean.MXAgent;
 import com.mixdesk.core.bean.MXEnterpriseConfig;
 import com.mixdesk.core.bean.MXMessage;
+import com.mixdesk.core.bean.MXProductCard;
 import com.mixdesk.core.bean.MXEvaluateConfig;
 import com.mixdesk.core.callback.OnClientInfoCallback;
 import com.mixdesk.core.callback.OnGetMessageListCallback;
@@ -71,8 +72,17 @@ public class ControllerImpl implements MXController {
             VideoMessage voiceMessage = (VideoMessage) message;
             MXManager.getInstance(context).sendVideoMessage(voiceMessage.getLocalPath(), onMQMessageSendCallback);
         } else if (BaseMessage.TYPE_CONTENT_HYBRID.equals(message.getContentType())) {
-            message.setStatus(BaseMessage.STATE_FAILED);
-            onMessageSendCallback.onFailure(message, 0, "");
+            // 访客发送的 hybrid 目前只有商品卡片：content 为 [{"type":"product_card","body":{...}}]
+            MXProductCard card = MXProductCard.fromHybridContent(message.getContent());
+            if (card == null) {
+                message.setStatus(BaseMessage.STATE_FAILED);
+                if (onMessageSendCallback != null) {
+                    // 20001 = ErrorCode.PARAMETER_ERROR（核心 jar 混淆后不含 ErrorCode 类，这里直接用值）
+                    onMessageSendCallback.onFailure(message, 20001, "unsupported hybrid content");
+                }
+                return;
+            }
+            MXManager.getInstance(context).sendProductCardMessage(card, onMQMessageSendCallback);
         }
     }
 
