@@ -144,4 +144,5 @@
     <string name="mx_ip_not_allowed">抱歉,当前系统暂不支持通过中国大陆地区的网络发送消息,感谢您的理解</string>
 
 
+    <string name="mx_product_card_link_unsupported">无法打开该链接</string>
 </resources>

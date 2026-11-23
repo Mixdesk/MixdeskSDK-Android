@@ -56,6 +56,7 @@ import com.mixdesk.core.MXManager;
 import com.mixdesk.core.MXMessageManager;
 import com.mixdesk.core.bean.MXAgent;
 import com.mixdesk.core.bean.MXMessage;
+import com.mixdesk.core.bean.MXProductCard;
 import com.mixdesk.core.bean.MXEvaluateConfig;
 import com.mixdesk.core.callback.OnGetActiveConvCallback;
 import com.mixdesk.core.callback.OnGetMessageListCallback;
@@ -78,6 +79,7 @@ import com.mixdesk.mixdesksdk.imageloader.MXImageLoader;
 import com.mixdesk.mixdesksdk.model.Agent;
 import com.mixdesk.mixdesksdk.model.AgentChangeMessage;
 import com.mixdesk.mixdesksdk.model.BaseMessage;
+import com.mixdesk.mixdesksdk.model.HybridMessage;
 import com.mixdesk.mixdesksdk.model.EvaluateMessage;
 import com.mixdesk.mixdesksdk.model.FileMessage;
 import com.mixdesk.mixdesksdk.model.PhotoMessage;
@@ -1314,11 +1316,14 @@ public class MXConversationActivity
         if (getIntent() != null) {
             String preSendTextContent = getIntent().getStringExtra(PRE_SEND_TEXT);
             String preSendImageFilePath = getIntent().getStringExtra(PRE_SEND_IMAGE_PATH);
-            Bundle preSendProductCardBundle = getIntent().getBundleExtra(PRE_SEND_PRODUCT_CARD);
+            Serializable preSendProductCard = getIntent().getSerializableExtra(PRE_SEND_PRODUCT_CARD);
             if (!TextUtils.isEmpty(preSendTextContent)) {
                 // 加入到待发送，等分配成功，并且 socket 连上的时候发送
                 TextMessage preSendMsg = new TextMessage(preSendTextContent);
                 delaySendList.add(preSendMsg);
+            }
+            if (preSendProductCard instanceof MXProductCard) {
+                delaySendList.add(createProductCardMessage((MXProductCard) preSendProductCard));
             }
             if (!TextUtils.isEmpty(preSendImageFilePath)) {
                 File imageFile = new File(preSendImageFilePath);
@@ -1847,6 +1852,29 @@ public class MXConversationActivity
     }
 
     /**
+     * 访客商品卡片消息（hybrid），发送失败时可点击重发
+     */
+    private HybridMessage createProductCardMessage(MXProductCard productCard) {
+        HybridMessage message = new HybridMessage();
+        message.setContentType(BaseMessage.TYPE_CONTENT_HYBRID);
+        message.setFromType(BaseMessage.TYPE_FROM_CLIENT);
+        message.setContent(productCard.toHybridContent());
+        return message;
+    }
+
+    /**
+     * 以访客身份发送一张商品卡片（聊天页已打开时调用），界面上立即出现，带发送中 / 失败重发
+     *
+     * @param productCard 用 {@link MXProductCard.Builder} 创建
+     */
+    public void sendProductCardMessage(MXProductCard productCard) {
+        if (productCard == null) {
+            return;
+        }
+        sendMessage(createProductCardMessage(productCard));
+    }
+
+    /**
      * 创建并发送TextMessage。如果没有客服在线，发送离线消息
      */
     private void createAndSendTextMessage(String msg) {
@@ -2239,6 +2267,17 @@ public class MXConversationActivity
             }
         });
         MXUtils.scrollListViewToBottom(mConversationListView);
+    }
+
+    /**
+     * 商品卡片等 hybrid 消息发送失败后点击重发（{@link MXHybridItem.OnCallbackListener}）
+     */
+    @Override
+    public void resendFailedMessage(BaseMessage failedMessage) {
+        if (mChatMsgAdapter != null) {
+            mChatMsgAdapter.notifyDataSetInvalidated();
+        }
+        resendMessage(failedMessage);
     }
 
     /**

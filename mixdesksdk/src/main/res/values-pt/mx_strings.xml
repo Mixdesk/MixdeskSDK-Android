@@ -144,4 +144,5 @@
 
     <string name="mx_evaluate_already_evaluate">Você já avaliou</string>
     <string name="mx_ip_not_allowed">Desculpe, o sistema atual não suporta o envio de mensagens através de redes da China continental. Obrigado pela sua compreensão.</string>
+    <string name="mx_product_card_link_unsupported">Não é possível abrir este link</string>
 </resources>
